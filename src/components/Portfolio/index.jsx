@@ -28,7 +28,7 @@ class Portfolio extends Component {
                 categories.indexOf(location.hash.replace('#', '')) > -1 ||
                 location.hash === '' ||
                 location.pathname === '/'
-                  ? 'col-sm-4 col-12 pt-5'
+                  ? 'col-sm-3 col-12 pt-5'
                   : 'd-none'
               }
             >
@@ -49,7 +49,7 @@ class Portfolio extends Component {
             <div
               className={
                 location.hash === '' || location.pathname === '/'
-                  ? 'col-sm-4 col-12 pt-5'
+                  ? 'col-sm-3 col-12 pt-5'
                   : 'd-none'
               }
             >
@@ -103,7 +103,7 @@ class Portfolio extends Component {
         </div>
         {/* <PortfolioNavi projects={projects} {...this.props} /> */}
         <div id="portfolio-grid" className="row justify-content-center">
-          <div className="col-lg-8 col-sm-10 col-12">
+          <div className="col-11">
             <div className="row justify-content-center">{projectLinks}</div>
           </div>
         </div>

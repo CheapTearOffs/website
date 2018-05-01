@@ -343,7 +343,7 @@ export const projectQuery = graphql`
         author
       }
     }
-    portfolio: allShopifyProduct(limit: 9) {
+    portfolio: allShopifyProduct(limit: 8) {
       totalCount
       projects: edges {
         project: node {
