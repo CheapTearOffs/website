@@ -71,8 +71,8 @@ class Home extends Component {
           id="home"
           className="container-fluid py-11"
           style={{
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${
-              bgLinks[2]
+            background: `linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${
+              bgLinks[3]
             })`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -83,7 +83,7 @@ class Home extends Component {
             <p
               className="text-center col-12"
               style={{
-                color: '#000',
+                color: '#fff',
                 lineHeight: '1',
                 fontFamily: 'poppins',
                 fontWeight: '700',
@@ -97,7 +97,7 @@ class Home extends Component {
             <p
               className="text-center col-md-auto"
               style={{
-                color: '#000',
+                color: '#fff',
                 lineHeight: '1',
                 fontFamily: 'poppins',
                 fontWeight: '300',
@@ -109,7 +109,6 @@ class Home extends Component {
             <div
               className="text-center col-md-auto"
               style={{
-                color: '#000',
                 lineHeight: '1',
                 fontFamily: 'poppins',
                 fontWeight: '300',
@@ -123,7 +122,7 @@ class Home extends Component {
             <p
               className="text-center col-lg-8 col-9"
               style={{
-                color: '#000',
+                color: '#fff',
                 lineHeight: '1',
                 fontFamily: 'comfortaa',
                 fontWeight: '400',
