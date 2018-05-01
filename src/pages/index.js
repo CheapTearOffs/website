@@ -45,17 +45,17 @@ class Home extends Component {
     })
 
     const AnimatedTypingComponent = () => (
-      <Typist loop={true} speed={140} >
-        <span style={{color: '#FE525B', fontWeight: '700'}}> Fox</span>
+      <Typist loop={true} speed={140}>
+        <span style={{ color: '#FE525B', fontWeight: '700' }}> Fox</span>
         <Backspace count={3} delay={1000} />
-        <span style={{color: '#FE525B', fontWeight: '700'}}> Dragon</span>
+        <span style={{ color: '#FE525B', fontWeight: '700' }}> Dragon</span>
         <Backspace count={6} delay={1000} />
-        <span style={{color: '#FE525B', fontWeight: '700'}}> Oakley</span>
+        <span style={{ color: '#FE525B', fontWeight: '700' }}> Oakley</span>
         <Backspace count={6} delay={1000} />
-        <span style={{color: '#FE525B', fontWeight: '700'}}> Spy</span>
+        <span style={{ color: '#FE525B', fontWeight: '700' }}> Spy</span>
         <Backspace count={3} delay={1000} />
       </Typist>
-    );
+    )
 
     return (
       <div style={transition && transition.style}>
@@ -76,28 +76,75 @@ class Home extends Component {
             })`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
           }}
         >
           <div className="row justify-content-center">
-            <p className="text-center col-12" style={{color: '#000', lineHeight: '1', fontFamily: 'poppins', fontWeight: '700', fontSize: '5em'}}>
+            <p
+              className="text-center col-12"
+              style={{
+                color: '#000',
+                lineHeight: '1',
+                fontFamily: 'poppins',
+                fontWeight: '700',
+                fontSize: '5em',
+              }}
+            >
               Spend LESS
             </p>
           </div>
           <div className="row justify-content-center">
-            <p className="text-center col-md-auto" style={{color: '#000', lineHeight: '1', fontFamily: 'poppins', fontWeight: '300', fontSize: '5em'}}>
+            <p
+              className="text-center col-md-auto"
+              style={{
+                color: '#000',
+                lineHeight: '1',
+                fontFamily: 'poppins',
+                fontWeight: '300',
+                fontSize: '5em',
+              }}
+            >
               New Arrivals
             </p>
-            <div className="text-center col-md-auto" style={{color: '#000', lineHeight: '1', fontFamily: 'poppins', fontWeight: '300', fontSize: '5em'}}>
-              <AnimatedTypingComponent/>
+            <div
+              className="text-center col-md-auto"
+              style={{
+                color: '#000',
+                lineHeight: '1',
+                fontFamily: 'poppins',
+                fontWeight: '300',
+                fontSize: '5em',
+              }}
+            >
+              <AnimatedTypingComponent />
             </div>
           </div>
           <div className="row justify-content-center">
-            <p className="text-center col-lg-8 col-9" style={{color: '#000', lineHeight: '1', fontFamily: 'comfortaa', fontWeight: '400', fontSize: '1.5em'}}>
+            <p
+              className="text-center col-lg-8 col-9"
+              style={{
+                color: '#000',
+                lineHeight: '1',
+                fontFamily: 'comfortaa',
+                fontWeight: '400',
+                fontSize: '1.5em',
+              }}
+            >
               OEM quality - WAY less $$$
             </p>
           </div>
           <div className="row justify-content-center">
-            <a className="badge badge-pill badge-primary" style={{padding: '1em 1.8em', fontWeight: '400', fontSize: '1em'}} href="#">SHOP NOW</a>
+            <a
+              className="badge badge-pill badge-primary"
+              style={{
+                padding: '1em 1.8em',
+                fontWeight: '400',
+                fontSize: '1em',
+              }}
+              href="#"
+            >
+              SHOP NOW
+            </a>
           </div>
         </div>
 
@@ -297,19 +344,17 @@ export const projectQuery = graphql`
         author
       }
     }
-    portfolio: allContentfulPhotoGallery(limit: 9) {
+    portfolio: allShopifyProduct(limit: 9) {
       totalCount
       projects: edges {
         project: node {
           id
-          categories
-          tags
-          title {
-            title
-          }
-          coverImage {
-            sizes(maxWidth: 300) {
-              ...GatsbyContentfulSizes_noBase64
+          title
+          productType
+          vendor
+          childShopifyProductVariant {
+            image {
+              src
             }
           }
         }

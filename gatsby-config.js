@@ -16,6 +16,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-shopify',
+      options: {
+        name: 'cheaptearoffs',
+        token: 'b659d0e5139ab3a4d5c7e5dd3383c46c',
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages`,
@@ -80,10 +87,10 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          'poppins\:200,300,400,500,600,700,800,900',
-          'comfortaa\:300,400,700'
-        ]
-      }
+          'poppins:200,300,400,500,600,700,800,900',
+          'comfortaa:300,400,700',
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-sitemap`,

@@ -33,6 +33,8 @@
     "gatsby-remark-smartypants": "^1.4.11",
     "gatsby-source-contentful": "^1.3.39",
     "gatsby-source-filesystem": "^1.5.24",
+    "gatsby-source-shopify": "^0.1.9",
+    "gatsby-source-shopify-storefront": "^1.0.0",
     "gatsby-transformer-remark": "^1.7.33",
     "gatsby-transformer-sharp": "^1.6.20",
     "lodash": "^4.17.5",

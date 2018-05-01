@@ -15,8 +15,8 @@ class Portfolio extends Component {
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
 
     projects.forEach((data, i) => {
-      const title = get(data, 'project.title.title')
-      const image = get(data, 'project.coverImage.sizes')
+      const title = get(data, 'project.title')
+      const image = get(data, 'project.childShopifyProductVariant.image.src')
       const path = get(data, 'project.id')
       const categories = get(data, 'project.categories')
 
@@ -34,7 +34,7 @@ class Portfolio extends Component {
             >
               <div className="text-center hovereffect">
                 <Link to={withPrefix(``)}>
-                  <Img sizes={image} />
+                  <img src={image} />
                   <div className="overlay">
                     <h2>{title}</h2>
                   </div>
@@ -55,7 +55,7 @@ class Portfolio extends Component {
             >
               <div className="text-center hovereffect">
                 <Link to={withPrefix(``)}>
-                  <Img sizes={image} />
+                  <img src={image} />
                   <div className="overlay">
                     <h2>{title}</h2>
                   </div>
@@ -71,12 +71,34 @@ class Portfolio extends Component {
       <div id="portfolio" className="container-fluid bg-even py-5">
         <div id="portfolio-title" className="row justify-content-center">
           <div className="col-lg-7 col-sm-10 col-11">
-            <p className="text-center" style={{color: '#000', lineHeight: '1', fontFamily: 'comfortaa', fontWeight: '300', fontSize: '1.5em'}}>Let's shop now</p>
+            <p
+              className="text-center"
+              style={{
+                color: '#000',
+                lineHeight: '1',
+                fontFamily: 'comfortaa',
+                fontWeight: '300',
+                fontSize: '1.5em',
+              }}
+            >
+              Let's shop now
+            </p>
           </div>
         </div>
         <div id="portfolio-title" className="row justify-content-center">
           <div className="col-lg-7 col-sm-10 col-11">
-            <p className="text-center" style={{color: '#000', lineHeight: '1', fontFamily: 'poppins', fontWeight: '700', fontSize: '3em'}}>New Arrivals</p>
+            <p
+              className="text-center"
+              style={{
+                color: '#000',
+                lineHeight: '1',
+                fontFamily: 'poppins',
+                fontWeight: '700',
+                fontSize: '3em',
+              }}
+            >
+              New Arrivals
+            </p>
           </div>
         </div>
         {/* <PortfolioNavi projects={projects} {...this.props} /> */}
