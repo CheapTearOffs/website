@@ -45,7 +45,7 @@ class Home extends Component {
     })
 
     const AnimatedTypingComponent = () => (
-      <Typist loop={true} speed={140}>
+      <Typist cursorClassName="text-white" loop={true} speed={140}>
         <span style={{ color: '#FE525B', fontWeight: '700' }}> Fox</span>
         <Backspace count={3} delay={1000} />
         <span style={{ color: '#FE525B', fontWeight: '700' }}> Dragon</span>

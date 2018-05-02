@@ -34,7 +34,7 @@ class Portfolio extends Component {
             >
               <div className="text-center hovereffect">
                 <Link to={withPrefix(``)}>
-                  <img src={image} />
+                  <img src={image} style={{ margin: 0, padding: 0 }} />
                   <div className="overlay">
                     <h2>{title}</h2>
                   </div>
@@ -55,7 +55,7 @@ class Portfolio extends Component {
             >
               <div className="text-center hovereffect">
                 <Link to={withPrefix(``)}>
-                  <img src={image} />
+                  <img src={image} style={{ margin: 0, padding: 0 }} />
                   <div className="overlay">
                     <h2>{title}</h2>
                   </div>
