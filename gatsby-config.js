@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-shopify',
       options: {
-        name: 'cheaptearoffs',
-        token: 'b659d0e5139ab3a4d5c7e5dd3383c46c',
+        name: 'cheaptearoffsstore',
+        token: 'd58c703d46500efe4996cc38db86bfc2',
       },
     },
     {
