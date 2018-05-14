@@ -109,7 +109,7 @@ class Portfolio extends Component {
         </div>
         <div className="row justify-content-center pt-3">
           <Link
-            className="btn btn-outline-primary"
+            className="btn btn-outline-danger"
             to={withPrefix('')}
             role="button"
           >

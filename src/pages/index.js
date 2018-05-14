@@ -49,13 +49,25 @@ class Home extends Component {
 
     const AnimatedTypingComponent = () => (
       <Typist cursorClassName="text-white" loop={true} speed={140}>
-        <span style={{ color: '#FE525B', fontWeight: '700' }}> Fox</span>
+        <span className="text-danger" style={{ fontWeight: '700' }}>
+          {' '}
+          Fox
+        </span>
         <Backspace count={3} delay={1000} />
-        <span style={{ color: '#FE525B', fontWeight: '700' }}> Dragon</span>
+        <span className="text-danger" style={{ fontWeight: '700' }}>
+          {' '}
+          Dragon
+        </span>
         <Backspace count={6} delay={1000} />
-        <span style={{ color: '#FE525B', fontWeight: '700' }}> Oakley</span>
+        <span className="text-danger" style={{ fontWeight: '700' }}>
+          {' '}
+          Oakley
+        </span>
         <Backspace count={6} delay={1000} />
-        <span style={{ color: '#FE525B', fontWeight: '700' }}> Spy</span>
+        <span className="text-danger" style={{ fontWeight: '700' }}>
+          {' '}
+          Spy
+        </span>
         <Backspace count={3} delay={1000} />
       </Typist>
     )
@@ -84,9 +96,8 @@ class Home extends Component {
         >
           <div className="row justify-content-center">
             <p
-              className="text-center col-12"
+              className="text-center col-12 text-white"
               style={{
-                color: '#fff',
                 lineHeight: '1',
                 fontFamily: 'poppins',
                 fontWeight: '700',
@@ -98,9 +109,8 @@ class Home extends Component {
           </div>
           <div className="row justify-content-center">
             <p
-              className="text-center col-md-auto"
+              className="text-center col-md-auto text-white"
               style={{
-                color: '#fff',
                 lineHeight: '1',
                 fontFamily: 'poppins',
                 fontWeight: '300',
@@ -123,9 +133,8 @@ class Home extends Component {
           </div>
           <div className="row justify-content-center">
             <p
-              className="text-center col-lg-8 col-9"
+              className="text-center col-lg-8 col-9 text-white"
               style={{
-                color: '#fff',
                 lineHeight: '1',
                 fontFamily: 'comfortaa',
                 fontWeight: '400',
@@ -137,7 +146,7 @@ class Home extends Component {
           </div>
           <div className="row justify-content-center">
             <a
-              className="badge badge-pill badge-primary"
+              className="badge badge-pill badge-danger"
               style={{
                 padding: '1em 1.8em',
                 fontWeight: '400',
@@ -152,126 +161,21 @@ class Home extends Component {
 
         <Portfolio projects={projects} {...this.props} />
 
-        <div id="instagram" className="container-fluid">
-          <LazyLoad once>
-            <div id={instafeedTarget} className="row no-gutters">
-              <Instafeed
-                limit="8"
-                ref="instafeed"
-                sortBy="most-liked"
-                target={instafeedTarget}
-                template="<a href=&quot;{{link}}&quot; class=&quot;col-3&quot;><img src=&quot;{{image}}&quot; /></a>"
-                userId="1482619234"
-                clientId="3799b1b8534743e1988f78a4fdb434d8"
-                accessToken="1482619234.3799b1b.45853abe9a024beeaa62e004a350bc46"
-              />
-            </div>
-          </LazyLoad>
-        </div>
-
-        {/* <div id="contact" className="container-fluid bg-odd py-6">
-          <div className="row justify-content-center">
-            <div className="col-lg-7 col-sm-10 col-12 text-center display-4">
-              Get In Touch
-            </div>
-          </div>
-          <div className="row justify-content-center pt-3">
-            <div className="col-lg-7 col-sm-10 col-12 text-center">
-              I am a local photographer who enjoys the art of capturing memories
-              that can be enjoyed for years to come. If you like my style, and
-              would like to work together, please contact me!
-            </div>
-          </div>
-          <div id="contact-info" className="row justify-content-center pt-6">
-            <div className="col-sm-3 col-12 text-center">
-              <a className="contact-link" href="tel://1-559-972-9013">
-                <div className="row">
-                  <div className="col-12 text-primary">
-                    <svg height="100" width="100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        stroke="#48C0E5"
-                        strokeWidth="2"
-                        fill="transparent"
-                      />
-                      <FontAwesomeIcon icon={faPhone} transform="shrink-10" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="row pt-3">
-                  <div className="col-12">+1(559)972-9013</div>
-                </div>
-              </a>
-            </div>
-            <div className="col-sm-3 col-12 text-center">
-              <a
-                className="contact-link"
-                href="mailto:leslievera2012@gmail.com"
+        <div id="enquire" className="container-fluid py-5 bg-white">
+          <div id="portfolio-title" className="row justify-content-center">
+            <div className="col-lg-7 col-sm-10 col-11">
+              <p
+                className="text-center text-danger"
+                style={{
+                  lineHeight: '1',
+                  fontFamily: 'poppins',
+                  fontWeight: '700',
+                  fontSize: '3em',
+                }}
               >
-                <div className="row">
-                  <div className="col-12 text-primary">
-                    <svg height="100" width="100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        stroke="#48C0E5"
-                        strokeWidth="2"
-                        fill="transparent"
-                      />
-                      <FontAwesomeIcon
-                        icon={faEnvelope}
-                        transform="shrink-10"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="row pt-3">
-                  <div className="col-12">leslievera2012@gmail.com</div>
-                </div>
-              </a>
+                Get In Touch
+              </p>
             </div>
-            <div className="col-sm-3 col-12 text-center">
-              <a className="contact-link" href="maps:36.3174153,-119.4717621">
-                <div className="row">
-                  <div className="col-12 text-primary">
-                    <svg height="100" width="100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        stroke="#48C0E5"
-                        strokeWidth="2"
-                        fill="transparent"
-                      />
-                      <FontAwesomeIcon
-                        icon={faLocation}
-                        transform="shrink-10"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="row pt-3">
-                  <div className="col-12">Visalia, CA</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div> */}
-
-        {/* <div
-          id="enquire"
-          className="container-fluid py-5 bg-dark"
-          style={{
-            backgroundImage: `url(${bgLinks[0]})`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          <div className="row justify-content-center">
-            <div className="text-center display-4 text-white">Enquire</div>
           </div>
           <div className="row justify-content-center pt-3">
             <div className="col-lg-6 col-sm-10">
@@ -319,10 +223,8 @@ class Home extends Component {
                   <Col s={6} className="pb-2">
                     <Input type="select" name="event" id="event" required>
                       <option>Event Type*</option>
-                      <option>Wedding/Engagement</option>
-                      <option>Newborn</option>
-                      <option>Porttrait</option>
-                      <option>Other</option>
+                      <option>General</option>
+                      <option>Sales</option>
                     </Input>
                   </Col>
                   <Col s={6} className="pb-2">
@@ -345,7 +247,24 @@ class Home extends Component {
               </Form>
             </div>
           </div>
-        </div> */}
+        </div>
+
+        <div id="instagram" className="container-fluid">
+          <LazyLoad once>
+            <div id={instafeedTarget} className="row no-gutters">
+              <Instafeed
+                limit="8"
+                ref="instafeed"
+                sortBy="most-liked"
+                target={instafeedTarget}
+                template="<a href=&quot;{{link}}&quot; class=&quot;col-3&quot;><img src=&quot;{{image}}&quot; /></a>"
+                userId="1482619234"
+                clientId="3799b1b8534743e1988f78a4fdb434d8"
+                accessToken="1482619234.3799b1b.45853abe9a024beeaa62e004a350bc46"
+              />
+            </div>
+          </LazyLoad>
+        </div>
       </div>
     )
   }

@@ -11,7 +11,7 @@
 
 // Reassign color vars to semantic color scheme
 $theme-colors: (
-  primary: #fe525b,
+  primary: $white,
   secondary: $gray-600,
   success: $green,
   info: $cyan,
@@ -92,7 +92,7 @@ $inverse-color: $gray-600 !default;
 
 // $link-color: $black !default;
 $link-decoration: none !default;
-$link-hover-color: #48c0e5 !default;
+$link-hover-color: $red !default;
 $link-hover-decoration: none !default;
 
 // Fonts
@@ -164,6 +164,10 @@ img {
     img {
       margin: 0;
       padding: 0;
+      filter: grayscale(100%);
+      &:hover {
+        filter: grayscale(0);
+      }
     }
   }
 }
