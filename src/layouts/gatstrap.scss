@@ -11,7 +11,7 @@
 
 // Reassign color vars to semantic color scheme
 $theme-colors: (
-  primary: #FE525B,
+  primary: #fe525b,
   secondary: $gray-600,
   success: $green,
   info: $cyan,
@@ -156,6 +156,16 @@ img {
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: -10em;
+}
+
+#instagram {
+  padding: 0;
+  #instafeed {
+    img {
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
 #enquire {

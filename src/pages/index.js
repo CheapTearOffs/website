@@ -15,6 +15,8 @@ import {
 } from 'reactstrap'
 import LazyLoad from 'react-lazyload'
 import Typist, { Backspace } from 'react-typing-animation'
+import InstagramFeed from 'react-instagram-feed'
+import Instafeed from 'react-instafeed'
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -33,6 +35,7 @@ import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope'
 class Home extends Component {
   render() {
     const { transition } = this.props
+    const instafeedTarget = 'instafeed'
 
     const bgLinks = []
     const pathPrefix =
@@ -148,6 +151,23 @@ class Home extends Component {
         </div>
 
         <Portfolio projects={projects} {...this.props} />
+
+        <div id="instagram" className="container-fluid">
+          <LazyLoad once>
+            <div id={instafeedTarget} className="row no-gutters">
+              <Instafeed
+                limit="8"
+                ref="instafeed"
+                sortBy="most-liked"
+                target={instafeedTarget}
+                template="<a href=&quot;{{link}}&quot; class=&quot;col-3&quot;><img src=&quot;{{image}}&quot; /></a>"
+                userId="1482619234"
+                clientId="3799b1b8534743e1988f78a4fdb434d8"
+                accessToken="1482619234.3799b1b.45853abe9a024beeaa62e004a350bc46"
+              />
+            </div>
+          </LazyLoad>
+        </div>
 
         {/* <div id="contact" className="container-fluid bg-odd py-6">
           <div className="row justify-content-center">

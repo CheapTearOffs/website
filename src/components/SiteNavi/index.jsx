@@ -71,16 +71,16 @@ class SiteNavi extends Component {
     return (
       <Navbar
         className="text-uppercase"
-        color='dark'
-        dark='true'
-        sticky='top'
+        color="dark"
+        // dark='true'
+        sticky="top"
         expand="md"
       >
         <NavbarBrand
           href={withPrefix('/')}
           // className={color === 'primary' ? 'invisible' : 'navbar-brand'}
         >
-          <img src={logo} width="150" style={{margin: 0, padding: 0}}/>
+          <img src={logo} width="150" style={{ margin: 0, padding: 0 }} />
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
