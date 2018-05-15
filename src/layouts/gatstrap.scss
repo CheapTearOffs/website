@@ -149,13 +149,38 @@ img {
   }
 }
 
+.title {
+  line-height: 1;
+  font-weight: 700;
+  font-size: 5em;
+  &-2 {
+    font-weight: 300;
+  }
+  &-3 {
+    font: {
+      family: 'comfortaa';
+      weight: 400;
+      size: 1.5em;
+    }
+  }
+}
+
+.button-1 {
+  padding: 1em 1.8em;
+  font: {
+    weight: 400;
+    size: 1em;
+  }
+}
+
+
 /* HEADER */
 #home {
   // background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)), url('./img/self-portrait.jpg');
-  background-color: #000000;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: -10em;
+  // background-color: #000000;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
 #instagram {
