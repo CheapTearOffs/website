@@ -15,12 +15,14 @@ import {
 } from 'reactstrap'
 import Typist, { Backspace } from 'react-typing-animation'
 import Instafeed from 'react-instafeed'
+import Shopify from 'shopify-buy'
 
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
 import Portfolio from '../components/Portfolio'
 import Instagram from '../components/Instagram'
+import Cart from '../components/Cart'
 
 import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/cheaptearoffs_logo_FullWhite.svg'
@@ -31,7 +33,96 @@ import faPhone from '@fortawesome/fontawesome-free-solid/faPhone'
 import faLocation from '@fortawesome/fontawesome-free-solid/faLocationArrow'
 import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope'
 
+const client = Shopify.buildClient({
+  storefrontAccessToken: 'd58c703d46500efe4996cc38db86bfc2',
+  domain: 'cheaptearoffsstore.myshopify.com'
+});
+
 class Home extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isCartOpen: false,
+      checkout: {lineItems: []},
+      products: [],
+      shop: {}
+    }
+
+    this.handleCartClose = this.handleCartClose.bind(this);
+    this.handleCartOpen = this.handleCartOpen.bind(this);
+    this.addVariantToCart = this.addVariantToCart.bind(this);
+    this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
+    this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
+  }
+
+  componentWillMount() {
+    client.checkout.create().then((res) => {
+      this.setState({
+        checkout: res,
+      });
+    });
+
+    client.product.fetchAll().then((res) => {
+      this.setState({
+        products: res,
+      });
+    });
+
+    client.shop.fetchInfo().then((res) => {
+      this.setState({
+        shop: res,
+      });
+    });
+  }
+
+  addVariantToCart(variantId, quantity){
+    this.setState({
+      isCartOpen: true,
+    });
+
+    const lineItemsToAdd = [{variantId, quantity: parseInt(quantity, 10)}]
+    const checkoutId = this.state.checkout.id
+
+    return client.checkout.addLineItems(checkoutId, lineItemsToAdd).then(res => {
+      this.setState({
+        checkout: res,
+      });
+    });
+  }
+
+  updateQuantityInCart(lineItemId, quantity) {
+    const checkoutId = this.state.checkout.id
+    const lineItemsToUpdate = [{id: lineItemId, quantity: parseInt(quantity, 10)}]
+
+    return client.checkout.updateLineItems(checkoutId, lineItemsToUpdate).then(res => {
+      this.setState({
+        checkout: res,
+      });
+    });
+  }
+
+  removeLineItemInCart(lineItemId) {
+    const checkoutId = this.state.checkout.id
+
+    return client.checkout.removeLineItems(checkoutId, [lineItemId]).then(res => {
+      this.setState({
+        checkout: res,
+      });
+    });
+  }
+
+  handleCartClose() {
+    this.setState({
+      isCartOpen: false,
+    });
+  }
+  handleCartOpen() {
+    this.setState({
+      isCartOpen: true,
+    });
+  }
+
   render() {
     const { transition } = this.props
 
@@ -64,6 +155,7 @@ class Home extends Component {
         <SiteNavi title={siteMetadata.title}
                   color="primary"
                   projects={this.props.data.portfolio.projects}
+                  cartState={this.handleCartOpen}
                   {...this.props} />
 
         <div  id="home"
@@ -165,7 +257,7 @@ class Home extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup className="justify-content-center" row>
-                  <Button color="primary">Submit</Button>
+                  <Button color="danger">Submit</Button>
                 </FormGroup>
               </Form>
             </div>
@@ -173,6 +265,14 @@ class Home extends Component {
         </div>
 
         <Instagram />
+
+        <Cart
+          checkout={this.state.checkout}
+          isCartOpen={this.state.isCartOpen}
+          handleCartClose={this.handleCartClose}
+          updateQuantityInCart={this.updateQuantityInCart}
+          removeLineItemInCart={this.removeLineItemInCart}
+        />
       </div>
     )
   }

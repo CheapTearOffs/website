@@ -14,6 +14,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap'
+import { NavLink as CartLink } from 'react-router-dom';
 
 import logo from '../../layouts/img/cheaptearoffs_logo_FullWhite.svg'
 
@@ -123,6 +124,9 @@ class SiteNavi extends Component {
             <NavItem active={location.hash === '#enquire' ? true : false}>
               <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink onClick={this.props.cartState}>Cart</NavLink>
+            </NavItem>]
           </Nav>
         </Collapse>
       </Navbar>
