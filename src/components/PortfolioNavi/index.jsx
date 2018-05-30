@@ -3,35 +3,40 @@ import get from 'lodash/get'
 import Link, { withPrefix } from 'gatsby-link'
 
 class PortfolioNavi extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     const { projects, location } = this.props
     const catList = []
     const catLinks = []
 
     projects.forEach((data, projCount) => {
-      const categories = get(data, 'project.categories')
+      const categories = get(data, 'project.vendor')
+      console.log(categories)
       const path = get(data, 'project.id')
       if (categories != null) {
-        categories.forEach((cat, catCount) => {
-          if (catList.indexOf(cat) == -1) {
-            catList.push(cat)
+        // categories.forEach((cat, catCount) => {
+          if (catList.indexOf(categories) == -1) {
+            catList.push(categories)
             catLinks.push(
               <li
                 className={
-                  location.hash === `#${cat}` ? 'navitem active' : 'nav-item'
+                  location.hash === `#${categories}` ? 'navitem active' : 'nav-item'
                 }
-                key={path + '-' + catCount}
+                key={path}
               >
                 <Link
-                  to={withPrefix(`/portfolio/#${cat}`)}
+                  to={withPrefix(`/portfolio/#${categories}`)}
                   className="nav-link"
                 >
-                  {cat}
+                  {categories}
                 </Link>
               </li>
             )
           }
-        })
+        // })
       }
     })
 
@@ -40,9 +45,10 @@ class PortfolioNavi extends Component {
         <div className="col-7">
           <ul className="nav justify-content-center text-uppercase">
             <li className="nav-item">
-              <Link to={withPrefix('/portfolio')} className="nav-link">
+              {/* <Link to={withPrefix('/store')} className="nav-link">
                 All
-              </Link>
+              </Link> */}
+              <a className="nav-link">All</a>
             </li>
             {catLinks}
           </ul>

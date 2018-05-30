@@ -3,12 +3,30 @@ import LazyLoad from 'react-lazyload'
 import Link, { withPrefix } from 'gatsby-link'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
+import { Button } from 'reactstrap'
 
 import PortfolioNavi from '../PortfolioNavi'
+import Product from '../Product';
 
-class Portfolio extends Component {
+class Products extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     const { location, projects } = this.props
+
+    // let products = this.props.products.map((product) => {
+    //   return (
+    //     <Product
+    //       addVariantToCart={this.props.addVariantToCart}
+    //       client={this.props.client}
+    //       checkout={this.props.checkout}
+    //       key={product.id.toString()}
+    //       product={product}
+    //     />
+    //   )
+    // })
 
     const projectLinks = []
     const pathPrefix =
@@ -17,8 +35,12 @@ class Portfolio extends Component {
     projects.forEach((data, i) => {
       const title = get(data, 'project.title')
       const image = get(data, 'project.childShopifyProductVariant.image.src')
+      const variantID = get(data, 'project.childShopifyProductVariant.shopifyId')
       const path = get(data, 'project.id')
       const categories = get(data, 'project.categories')
+      const price = get(data, 'project.maxPrice')
+
+      console.log(variantID);
 
       if (categories != null) {
         projectLinks.push(
@@ -36,8 +58,20 @@ class Portfolio extends Component {
                 <Link to={withPrefix(``)}>
                   <img src={image} style={{ margin: 0, padding: 0 }} />
                   <div className="overlay">
-                    <h2>{title}</h2>
+                    <h2>
+                      {title} <br/>
+                      ${price}
+                    </h2>
                   </div>
+                </Link>
+              </div>
+              <div className="row justify-content-center pt-3">
+                <Link
+                  className="btn btn-outline-danger"
+                  to={withPrefix('')}
+                  role="button"
+                >
+                  Buy
                 </Link>
               </div>
             </div>
@@ -57,9 +91,22 @@ class Portfolio extends Component {
                 <Link to={withPrefix(``)}>
                   <img src={image} style={{ margin: 0, padding: 0 }} />
                   <div className="overlay">
-                    <h2>{title}</h2>
+                    <h2>
+                      {title} <br/>
+                      ${price}
+                    </h2>
                   </div>
                 </Link>
+              </div>
+              <div className="row justify-content-center pt-3">
+                {/* <Link
+                  className="btn btn-outline-danger"
+                  role="button"
+                  onClick={() => this.props.addVariantToCart(variantID, 1)}
+                >
+                  Buy
+                </Link> */}
+                <a className="btn btn-outline-danger text-danger" onClick={() => this.props.addVariantToCart(variantID, 1)}>Buy</a>
               </div>
             </div>
           </LazyLoad>
@@ -69,7 +116,7 @@ class Portfolio extends Component {
 
     return (
       <div id="portfolio" className="container-fluid bg-even py-5">
-        <div id="portfolio-title" className="row justify-content-center">
+        {/* <div id="portfolio-title" className="row justify-content-center">
           <div className="col-lg-7 col-sm-10 col-11">
             <p
               className="text-center"
@@ -84,7 +131,7 @@ class Portfolio extends Component {
               Let's shop now
             </p>
           </div>
-        </div>
+        </div> */}
         <div id="portfolio-title" className="row justify-content-center">
           <div className="col-lg-7 col-sm-10 col-11">
             <p
@@ -97,28 +144,19 @@ class Portfolio extends Component {
                 fontSize: '3em',
               }}
             >
-              New Arrivals
+              Let's shop now
             </p>
           </div>
         </div>
-        {/* <PortfolioNavi projects={projects} {...this.props} /> */}
+        <PortfolioNavi projects={projects} {...this.props} />
         <div id="portfolio-grid" className="row justify-content-center">
           <div className="col-11">
             <div className="row justify-content-center">{projectLinks}</div>
           </div>
-        </div>
-        <div className="row justify-content-center pt-3">
-          <Link
-            className="btn btn-outline-danger"
-            to={withPrefix('')}
-            role="button"
-          >
-            More
-          </Link>
         </div>
       </div>
     )
   }
 }
 
-export default Portfolio
+export default Products

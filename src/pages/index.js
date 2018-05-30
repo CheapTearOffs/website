@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
-import Link, { withPrefix } from 'gatsby-link'
+import Link, { withPrefix, navigateTo } from 'gatsby-link'
 import {
   Button,
   Col,
@@ -20,7 +20,7 @@ import Shopify from 'shopify-buy'
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
-import Portfolio from '../components/Portfolio'
+import Products from '../components/Products'
 import Instagram from '../components/Instagram'
 import Cart from '../components/Cart'
 
@@ -155,8 +155,8 @@ class Home extends Component {
         <SiteNavi title={siteMetadata.title}
                   color="primary"
                   projects={this.props.data.portfolio.projects}
-                  cartState={this.handleCartOpen}
-                  {...this.props} />
+                  handleCartOpen={this.handleCartOpen}
+                  {...this.props}/>
 
         <div  id="home"
               className="container-fluid py-11"
@@ -180,13 +180,13 @@ class Home extends Component {
             </p>
           </div>
           <div  className="row justify-content-center">
-            <a  className="button-1 badge badge-pill badge-danger" href="#">
+            <a  className="button-1 badge badge-pill badge-danger" href={withPrefix(`/store`)}>
               SHOP NOW
             </a>
           </div>
         </div>
 
-        <Portfolio  projects={projects} {...this.props} />
+        <Products products={this.state.products} client={client} addVariantToCart={this.addVariantToCart} projects={projects} {...this.props} />
 
         <div  id="enquire" className="container-fluid py-5 bg-white">
           <div  id="portfolio-title" className="row justify-content-center">
@@ -237,7 +237,7 @@ class Home extends Component {
                 <FormGroup row>
                   <Col s={6} className="pb-2">
                     <Input type="select" name="event" id="event" required>
-                      <option>Event Type*</option>
+                      <option>Reason*</option>
                       <option>General</option>
                       <option>Sales</option>
                     </Input>
@@ -298,6 +298,7 @@ export const projectQuery = graphql`
           title
           productType
           vendor
+          maxPrice
           childShopifyProductVariant {
             image {
               src

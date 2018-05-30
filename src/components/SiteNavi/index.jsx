@@ -118,6 +118,9 @@ class SiteNavi extends Component {
                 {catLinks}
               </DropdownMenu>
             </UncontrolledDropdown> */}
+            <NavItem active={location.hash === '/store' ? true : false}>
+              <NavLink href={withPrefix('/store')}>Store</NavLink>
+            </NavItem>
             <NavItem active={location.hash === '#contact' ? true : false}>
               <NavLink href={withPrefix('/#contact')}>Contact</NavLink>
             </NavItem>
@@ -125,7 +128,7 @@ class SiteNavi extends Component {
               <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={this.props.cartState}>Cart</NavLink>
+              <NavLink onClick={this.props.handleCartOpen}>Cart</NavLink>
             </NavItem>]
           </Nav>
         </Collapse>
