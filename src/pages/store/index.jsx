@@ -22,7 +22,8 @@ class StoreIndex extends Component {
       isCartOpen: false,
       checkout: {lineItems: []},
       products: [],
-      shop: {}
+      shop: {},
+      showProduct: 'All'
     }
 
     this.handleCartClose = this.handleCartClose.bind(this);
@@ -30,6 +31,7 @@ class StoreIndex extends Component {
     this.addVariantToCart = this.addVariantToCart.bind(this);
     this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
     this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
+    this.showHideProjects = this.showHideProjects.bind(this);
   }
 
   componentWillMount() {
@@ -57,13 +59,10 @@ class StoreIndex extends Component {
       isCartOpen: true,
     });
 
-    console.log("ADD VARIANT: " + variantId)
     const lineItemsToAdd = [{variantId, quantity: parseInt(quantity, 10)}]
     const checkoutId = this.state.checkout.id
-    console.log("checkoutId: " + checkoutId)
 
     return client.checkout.addLineItems(checkoutId, lineItemsToAdd).then(res => {
-      console.log(lineItemsToAdd)
       this.setState({
         checkout: res,
       });
@@ -102,6 +101,13 @@ class StoreIndex extends Component {
     });
   }
 
+  showHideProjects(vendor) {
+    console.log("vendor: " + vendor)
+    this.setState({
+      showProduct: vendor
+    })
+  }
+
   render() {
     const { location, transition } = this.props
     const projects = get(this, 'props.data.portfolio.projects')
@@ -113,7 +119,7 @@ class StoreIndex extends Component {
                   projects={this.props.data.portfolio.projects}
                   handleCartOpen={this.handleCartOpen}
                   {...this.props}/>
-        <Store products={this.state.products} client={client} addVariantToCart={this.addVariantToCart} projects={projects} {...this.props} />
+        <Store showProduct={this.state.showProduct} client={client} addVariantToCart={this.addVariantToCart} showHideProjects={this.showHideProjects} projects={projects} {...this.props} />
 
         <Cart
           checkout={this.state.checkout}

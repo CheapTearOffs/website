@@ -3,9 +3,9 @@ import get from 'lodash/get'
 import Link, { withPrefix } from 'gatsby-link'
 
 class PortfolioNavi extends Component {
-  shouldComponentUpdate() {
-    return false;
-  }
+  // shouldComponentUpdate() {
+  //   return false;
+  // }
 
   render() {
     const { projects, location } = this.props
@@ -13,26 +13,20 @@ class PortfolioNavi extends Component {
     const catLinks = []
 
     projects.forEach((data, projCount) => {
-      const categories = get(data, 'project.vendor')
-      console.log(categories)
+      const vendor = get(data, 'project.vendor')
       const path = get(data, 'project.id')
-      if (categories != null) {
+      if (vendor != null) {
         // categories.forEach((cat, catCount) => {
-          if (catList.indexOf(categories) == -1) {
-            catList.push(categories)
+          if (catList.indexOf(vendor) == -1) {
+            catList.push(vendor)
             catLinks.push(
               <li
                 className={
-                  location.hash === `#${categories}` ? 'navitem active' : 'nav-item'
+                  location.hash === `#${vendor}` ? 'navitem active' : 'nav-item'
                 }
                 key={path}
               >
-                <Link
-                  to={withPrefix(`/portfolio/#${categories}`)}
-                  className="nav-link"
-                >
-                  {categories}
-                </Link>
+                <a className="nav-link" onClick={() => this.props.showHideProjects(vendor)}>{vendor}</a>
               </li>
             )
           }
@@ -48,7 +42,7 @@ class PortfolioNavi extends Component {
               {/* <Link to={withPrefix('/store')} className="nav-link">
                 All
               </Link> */}
-              <a className="nav-link">All</a>
+              <a className="nav-link" onClick={() => this.props.showHideProjects("All")}>All</a>
             </li>
             {catLinks}
           </ul>

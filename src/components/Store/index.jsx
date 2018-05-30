@@ -9,28 +9,18 @@ import PortfolioNavi from '../PortfolioNavi'
 import Product from '../Product';
 
 class Products extends Component {
-  shouldComponentUpdate() {
-    return false;
-  }
+  // shouldComponentUpdate() {
+    // return false;
+  // }
 
   render() {
-    const { location, projects } = this.props
-
-    // let products = this.props.products.map((product) => {
-    //   return (
-    //     <Product
-    //       addVariantToCart={this.props.addVariantToCart}
-    //       client={this.props.client}
-    //       checkout={this.props.checkout}
-    //       key={product.id.toString()}
-    //       product={product}
-    //     />
-    //   )
-    // })
+    const { location, projects, showProduct } = this.props
 
     const projectLinks = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+
+    console.log(projects)
 
     projects.forEach((data, i) => {
       const title = get(data, 'project.title')
@@ -39,78 +29,80 @@ class Products extends Component {
       const path = get(data, 'project.id')
       const categories = get(data, 'project.categories')
       const price = get(data, 'project.maxPrice')
+      const vendor = get(data, 'project.vendor')
 
-      console.log(variantID);
-
-      if (categories != null) {
-        projectLinks.push(
-          <LazyLoad key={path} once>
-            <div
-              className={
-                categories.indexOf(location.hash.replace('#', '')) > -1 ||
-                location.hash === '' ||
-                location.pathname === '/'
-                  ? 'col-sm-3 col-12 pt-5'
-                  : 'd-none'
-              }
-            >
-              <div className="text-center hovereffect">
-                <Link to={withPrefix(``)}>
-                  <img src={image} style={{ margin: 0, padding: 0 }} />
-                  <div className="overlay">
-                    <h2>
-                      {title} <br/>
-                      ${price}
-                    </h2>
-                  </div>
-                </Link>
+      if(showProduct == vendor || showProduct == "All"){
+        console.log(title)
+        if (categories != null) {
+          projectLinks.push(
+            <LazyLoad key={path} once>
+              <div
+                className={
+                  categories.indexOf(location.hash.replace('#', '')) > -1 ||
+                  location.hash === '' ||
+                  location.pathname === '/'
+                    ? 'col-sm-3 col-12 pt-5'
+                    : 'd-none'
+                }
+              >
+                <div className="text-center hovereffect">
+                  <Link to={withPrefix(``)}>
+                    <img src={image} style={{ margin: 0, padding: 0 }} />
+                    <div className="overlay">
+                      <h2>
+                        {title} <br/>
+                        ${price}
+                      </h2>
+                    </div>
+                  </Link>
+                </div>
+                <div className="row justify-content-center pt-3">
+                  <Link
+                    className="btn btn-outline-danger"
+                    to={withPrefix('')}
+                    role="button"
+                  >
+                    Buy
+                  </Link>
+                </div>
               </div>
-              <div className="row justify-content-center pt-3">
-                <Link
-                  className="btn btn-outline-danger"
-                  to={withPrefix('')}
-                  role="button"
-                >
-                  Buy
-                </Link>
+            </LazyLoad>
+          )
+        } else {
+          projectLinks.push(
+            <LazyLoad key={path} once>
+              <div
+                className={
+                  location.hash === '' || location.pathname === '/'
+                    ? 'col-sm-3 col-12 pt-5'
+                    : 'd-none'
+                }
+              >
+                <div className="text-center hovereffect">
+                  <Link to={withPrefix(``)}>
+                    <img src={image} style={{ margin: 0, padding: 0 }} />
+                    <div className="overlay">
+                      <h2>
+                        {title} <br/>
+                        ${price}
+                      </h2>
+                    </div>
+                  </Link>
+                </div>
+                <div className="row justify-content-center pt-3">
+                  {/* <Link
+                    className="btn btn-outline-danger"
+                    role="button"
+                    onClick={() => this.props.addVariantToCart(variantID, 1)}
+                  >
+                    Buy
+                  </Link> */}
+                  <a className="btn btn-outline-danger text-danger" onClick={() => this.props.addVariantToCart(variantID, 1)}>Buy</a>
+                </div>
               </div>
-            </div>
-          </LazyLoad>
-        )
-      } else {
-        projectLinks.push(
-          <LazyLoad key={path} once>
-            <div
-              className={
-                location.hash === '' || location.pathname === '/'
-                  ? 'col-sm-3 col-12 pt-5'
-                  : 'd-none'
-              }
-            >
-              <div className="text-center hovereffect">
-                <Link to={withPrefix(``)}>
-                  <img src={image} style={{ margin: 0, padding: 0 }} />
-                  <div className="overlay">
-                    <h2>
-                      {title} <br/>
-                      ${price}
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-              <div className="row justify-content-center pt-3">
-                {/* <Link
-                  className="btn btn-outline-danger"
-                  role="button"
-                  onClick={() => this.props.addVariantToCart(variantID, 1)}
-                >
-                  Buy
-                </Link> */}
-                <a className="btn btn-outline-danger text-danger" onClick={() => this.props.addVariantToCart(variantID, 1)}>Buy</a>
-              </div>
-            </div>
-          </LazyLoad>
-        )
+            </LazyLoad>
+          )
+        }
       }
     })
 
@@ -151,6 +143,7 @@ class Products extends Component {
         <PortfolioNavi projects={projects} {...this.props} />
         <div id="portfolio-grid" className="row justify-content-center">
           <div className="col-11">
+            {/* {products} */}
             <div className="row justify-content-center">{projectLinks}</div>
           </div>
         </div>
