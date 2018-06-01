@@ -18,36 +18,16 @@ class Products extends Component {
     const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
 
     let products = this.props.projects.map((product) => {
+      let image = product.project.images[0].originalSrc
+      image = image.substring(0, image.indexOf('?'))
+
       if(showProduct == product.project.vendor || showProduct == "All") {
         return (
-          // <LazyLoad key={product.project.title} once>
-          //   <div className={'col-sm-3 col-12 pt-5'}>
-          //     <div className="row text-center hovereffect">
-          //         <img src={product.project.images[0].originalSrc} />
-          //         <div className="overlay">
-          //           <h2>
-          //             {product.project.title} <br/>
-          //             ${product.project.extras.maxPrice}
-          //           </h2>
-          //         </div>
-          //     </div>
-          //     <div className="row justify-content-center pt-3">
-          //       {/* <Link
-          //         className="btn btn-outline-danger"
-          //         role="button"
-          //         onClick={() => this.props.addVariantToCart(variantID, 1)}
-          //       >
-          //         Buy
-          //       </Link> */}
-          //       <a className="btn btn-outline-danger text-danger" onClick={() => this.props.addVariantToCart(variantID, 1)}>Buy</a>
-          //     </div>
-          //   </div>
-          // </LazyLoad>
           <LazyLoad key={product.project.title} once>
           <div className={'col-sm-3 col-12 pt-5'} >
             <div className="text-center hovereffect">
               <Link to={withPrefix(``)}>
-                <img src={product.project.images[0].originalSrc} style={{ margin: 0, padding: 0 }} />
+                <img src={image} style={{ margin: 0, padding: 0 }} />
                 <div className="overlay">
                   <h2>
                     ${product.project.extras.maxPrice}
