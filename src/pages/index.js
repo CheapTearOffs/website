@@ -298,9 +298,6 @@ export const projectQuery = graphql`
           vendor
           images {
             originalSrc
-            localFile {
-              publicURL
-            }
           }
           extras {
             maxPrice

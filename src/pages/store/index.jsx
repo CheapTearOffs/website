@@ -155,9 +155,6 @@ export const pageQuery = graphql`
           vendor
           images {
             originalSrc
-            localFile {
-              publicURL
-            }
           }
           extras {
             maxPrice
