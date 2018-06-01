@@ -127,11 +127,10 @@ class Home extends Component {
     const { transition } = this.props
 
     const bgLinks = []
-    const pathPrefix =
-      process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
-    const projects = get(this, 'props.data.portfolio.projects')
+    const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+    const projects = this.props.data.allShopifyProduct.edges
 
-    const bgImages = get(this, 'props.data.allImageSharp.edges')
+    const bgImages = this.props.data.allImageSharp.edges
     bgImages.forEach((data, i) => {
       bgLinks.push(get(data, 'node.sizes.src'))
     })
@@ -154,7 +153,7 @@ class Home extends Component {
         <Helmet title={siteMetadata.title} />
         <SiteNavi title={siteMetadata.title}
                   color="primary"
-                  projects={this.props.data.portfolio.projects}
+                  projects={projects}
                   handleCartOpen={this.handleCartOpen}
                   {...this.props}/>
 
@@ -290,19 +289,21 @@ export const projectQuery = graphql`
         author
       }
     }
-    portfolio: allShopifyProduct(limit: 8) {
+    allShopifyProduct(limit: 8) {
       totalCount
-      projects: edges {
+      edges {
         project: node {
           id
           title
-          productType
           vendor
-          maxPrice
-          childShopifyProductVariant {
-            image {
-              src
+          images {
+            originalSrc
+            localFile {
+              publicURL
             }
+          }
+          extras {
+            maxPrice
           }
         }
       }

@@ -110,16 +110,20 @@ class StoreIndex extends Component {
 
   render() {
     const { location, transition } = this.props
-    const projects = get(this, 'props.data.portfolio.projects')
+    const projects = this.props.data.allShopifyProduct.edges
 
     return (
       <div id="portfolio" style={transition && transition.style}>
         <SiteNavi title={siteMetadata.title}
                   color="primary"
-                  projects={this.props.data.portfolio.projects}
+                  projects={projects}
                   handleCartOpen={this.handleCartOpen}
                   {...this.props}/>
-        <Store showProduct={this.state.showProduct} client={client} addVariantToCart={this.addVariantToCart} showHideProjects={this.showHideProjects} projects={projects} {...this.props} />
+        <Store  showProduct={this.state.showProduct} 
+                client={client} 
+                addVariantToCart={this.addVariantToCart} 
+                showHideProjects={this.showHideProjects} 
+                projects={projects} {...this.props} />
 
         <Cart
           checkout={this.state.checkout}
@@ -142,20 +146,24 @@ export const pageQuery = graphql`
         title
       }
     }
-    portfolio: allShopifyProduct {
+    allShopifyProduct {
       totalCount
-      projects: edges {
+      edges {
         project: node {
           id
           title
-          productType
           vendor
-          maxPrice
-          childShopifyProductVariant {
-            shopifyId
-            image {
-              src
+          images {
+            originalSrc
+            localFile {
+              publicURL
             }
+          }
+          extras {
+            maxPrice
+          }
+          variants {
+            shopifyId
           }
         }
       }

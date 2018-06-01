@@ -26,7 +26,7 @@ class PortfolioNavi extends Component {
                 }
                 key={path}
               >
-                <a className="nav-link" onClick={() => this.props.showHideProjects(vendor)}>{vendor}</a>
+                <a className="nav-link" style={{cursor: 'pointer'}} onClick={() => this.props.showHideProjects(vendor)}>{vendor}</a>
               </li>
             )
           }
@@ -42,7 +42,7 @@ class PortfolioNavi extends Component {
               {/* <Link to={withPrefix('/store')} className="nav-link">
                 All
               </Link> */}
-              <a className="nav-link" onClick={() => this.props.showHideProjects("All")}>All</a>
+              <a className="nav-link" style={{cursor: 'pointer'}} onClick={() => this.props.showHideProjects("All")}>All</a>
             </li>
             {catLinks}
           </ul>

@@ -10,79 +10,26 @@ import Product from '../Product';
 class Store extends Component {
   render() {
     const { location, projects } = this.props
+    const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
 
-    // let products = this.props.products.map((product) => {
-    //   return (
-    //     <Product
-    //       addVariantToCart={this.props.addVariantToCart}
-    //       client={this.props.client}
-    //       checkout={this.props.checkout}
-    //       key={product.id.toString()}
-    //       product={product}
-    //     />
-    //   )
-    // })
-
-    const projectLinks = []
-    const pathPrefix =
-      process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
-
-    projects.forEach((data, i) => {
-      const title = get(data, 'project.title')
-      const image = get(data, 'project.childShopifyProductVariant.image.src')
-      const path = get(data, 'project.id')
-      const categories = get(data, 'project.categories')
-      const price = get(data, 'project.maxPrice')
-
-      if (categories != null) {
-        projectLinks.push(
-          <LazyLoad key={path} once>
-            <div
-              className={
-                categories.indexOf(location.hash.replace('#', '')) > -1 ||
-                location.hash === '' ||
-                location.pathname === '/'
-                  ? 'col-sm-3 col-12 pt-5'
-                  : 'd-none'
-              }
-            >
-              <div className="text-center hovereffect">
-                <Link to={withPrefix(``)}>
-                  <img src={image} style={{ margin: 0, padding: 0 }} />
-                  <div className="overlay">
-                    <h2>{title}</h2>
-                    <h3>{price}</h3>
-                  </div>
-                </Link>
-              </div>
+    let products = this.props.projects.map((product) => {
+      return (
+        <LazyLoad key={product.project.title} once>
+          <div className={'col-sm-3 col-12 pt-5'} >
+            <div className="text-center hovereffect">
+              <Link to={withPrefix(``)}>
+                <img src={product.project.images[0].originalSrc} style={{ margin: 0, padding: 0 }} />
+                <div className="overlay">
+                  <h2>
+                    {product.project.title} <br/>
+                    ${product.project.extras.maxPrice}
+                  </h2>
+                </div>
+              </Link>
             </div>
-          </LazyLoad>
-        )
-      } else {
-        projectLinks.push(
-          <LazyLoad key={path} once>
-            <div
-              className={
-                location.hash === '' || location.pathname === '/'
-                  ? 'col-sm-3 col-12 pt-5'
-                  : 'd-none'
-              }
-            >
-              <div className="text-center hovereffect">
-                <Link to={withPrefix(``)}>
-                  <img src={image} style={{ margin: 0, padding: 0 }} />
-                  <div className="overlay">
-                    <h2>
-                      {title} <br/>
-                      ${price}
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </LazyLoad>
-        )
-      }
+          </div>
+        </LazyLoad>
+      )
     })
 
     return (
@@ -122,7 +69,8 @@ class Store extends Component {
         {/* <PortfolioNavi projects={projects} {...this.props} /> */}
         <div id="portfolio-grid" className="row justify-content-center">
           <div className="col-11">
-            <div className="row justify-content-center">{projectLinks}</div>
+            {/* <div className="row justify-content-center">{projectLinks}</div> */}
+            <div className="row justify-content-center">{products}</div>
           </div>
         </div>
         <div className="row justify-content-center pt-3">
@@ -134,9 +82,6 @@ class Store extends Component {
             More
           </Link>
         </div>
-
-        {/* <h1>TESTING</h1> */}
-        {/* {products} */}
       </div>
     )
   }
