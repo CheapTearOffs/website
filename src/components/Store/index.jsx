@@ -21,7 +21,7 @@ class Products extends Component {
       let image = product.project.images[0].originalSrc
       image = image.substring(0, image.indexOf('?'))
 
-      if(showProduct == product.project.vendor || showProduct == "All") {
+      if(showProduct == product.project.productType || showProduct == "All") {
         return (
           <LazyLoad key={product.project.title} once>
           <div className={'col-sm-3 col-12 pt-5'} >

@@ -101,10 +101,10 @@ class StoreIndex extends Component {
     });
   }
 
-  showHideProjects(vendor) {
-    console.log("vendor: " + vendor)
+  showHideProjects(type) {
+    console.log("type: " + type)
     this.setState({
-      showProduct: vendor
+      showProduct: type
     })
   }
 
@@ -151,6 +151,7 @@ export const pageQuery = graphql`
       edges {
         project: node {
           id
+          productType
           title
           vendor
           images {

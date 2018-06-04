@@ -15,18 +15,15 @@ class PortfolioNavi extends Component {
     projects.forEach((data, projCount) => {
       const vendor = get(data, 'project.vendor')
       const path = get(data, 'project.id')
-      if (vendor != null) {
+      const type = get (data, 'project.productType')
+
+      if (type != null) {
         // categories.forEach((cat, catCount) => {
-          if (catList.indexOf(vendor) == -1) {
-            catList.push(vendor)
+          if (catList.indexOf(type) == -1) {
+            catList.push(type)
             catLinks.push(
-              <li
-                className={
-                  location.hash === `#${vendor}` ? 'navitem active' : 'nav-item'
-                }
-                key={path}
-              >
-                <a className="nav-link" style={{cursor: 'pointer'}} onClick={() => this.props.showHideProjects(vendor)}>{vendor}</a>
+              <li className={location.hash === `#${type}` ? 'navitem active' : 'nav-item'} key={path} >
+                <a className="nav-link" style={{cursor: 'pointer'}} onClick={() => this.props.showHideProjects(type)} >{type}</a>
               </li>
             )
           }
