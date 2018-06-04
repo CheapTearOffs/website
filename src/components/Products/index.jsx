@@ -71,7 +71,7 @@ class Store extends Component {
         </div>
         {/* <PortfolioNavi projects={projects} {...this.props} /> */}
         <div id="portfolio-grid" className="row justify-content-center">
-          <div className="col-11">
+          <div className="col-lg-9 col-11">
             {/* <div className="row justify-content-center">{projectLinks}</div> */}
             <div className="row justify-content-center">{products}</div>
           </div>
