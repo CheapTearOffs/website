@@ -19,16 +19,14 @@ class Products extends Component {
     const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
 
     let products = this.props.projects.sort((a,b) => {
-      if(showProduct != "All") {
-        var vendorA = a.project.vendor
-        var vendorB = b.project.vendor
+      var vendorA = a.project.vendor
+      var vendorB = b.project.vendor
   
-        if(vendorA < vendorB) {
-          return -1
-        }
-        if(vendorA > vendorB) {
-          return 1
-        }  
+      if(vendorA < vendorB) {
+        return -1
+      }
+      if(vendorA > vendorB) {
+        return 1
       }
       return 0
     }).map((product) => {
@@ -43,7 +41,7 @@ class Products extends Component {
         })
       })
 
-      if(showProduct == product.project.productType || showProduct == "All") {
+      if(showProduct == product.project.productType) {
         return (
           <Product addVariantToCart={this.props.addVariantToCart} client={this.props.client} key={product.project.title} product={product} />
         )

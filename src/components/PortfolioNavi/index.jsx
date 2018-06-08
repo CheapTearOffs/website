@@ -35,12 +35,9 @@ class PortfolioNavi extends Component {
       <div className="row justify-content-center d-none d-md-flex">
         <div className="col-7">
           <ul className="nav justify-content-center text-uppercase">
-            <li className="nav-item">
-              {/* <Link to={withPrefix('/store')} className="nav-link">
-                All
-              </Link> */}
+            {/* <li className="nav-item">
               <a className="nav-link" style={{cursor: 'pointer'}} onClick={() => this.props.showHideProjects("All")}>All</a>
-            </li>
+            </li> */}
             {catLinks}
           </ul>
         </div>

@@ -23,7 +23,7 @@ class StoreIndex extends Component {
       checkout: {lineItems: []},
       products: [],
       shop: {},
-      showProduct: 'All'
+      showProduct: 'Lenses'
     }
 
     this.handleCartClose = this.handleCartClose.bind(this);
