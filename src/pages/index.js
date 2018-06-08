@@ -289,7 +289,7 @@ export const projectQuery = graphql`
         author
       }
     }
-    allShopifyProduct(limit: 8) {
+    allShopifyProduct(limit: 6) {
       totalCount
       edges {
         project: node {
