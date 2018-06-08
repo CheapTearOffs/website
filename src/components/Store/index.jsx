@@ -7,48 +7,45 @@ import { Button } from 'reactstrap'
 
 import PortfolioNavi from '../PortfolioNavi'
 import Product from '../Product';
+import VariantSelector from '../VariantSelector'
 
 class Products extends Component {
   // shouldComponentUpdate() {
-    // return false;
+  //   return false;
   // }
 
   render() {
     const { location, projects, showProduct } = this.props
     const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
 
-    let products = this.props.projects.map((product) => {
-      let image = product.project.images[0].originalSrc
-      image = image.substring(0, image.indexOf('?'))
+    let products = this.props.projects.sort((a,b) => {
+                                        var vendorA = a.project.vendor
+                                        var vendorB = b.project.vendor
+
+                                        if(vendorA < vendorB) {
+                                          return -1
+                                        }
+                                        if(vendorA > vendorB) {
+                                          return 1
+                                        }
+
+                                        return 0
+                                      })
+                                      .map((product) => {
+                                        let image = product.project.images[0].originalSrc
+                                        image = image.substring(0, image.indexOf('?'))
+
+                                        let variants = product.project.variants.map((variant) => {
+                                          return variant.selectedOptions.map((option) => {
+                                            if(option.value != "Default Title") {
+                                              return option.value
+                                            }
+                                          })
+                                        })
 
       if(showProduct == product.project.productType || showProduct == "All") {
         return (
-          <LazyLoad key={product.project.title} once>
-          <div className={'col-sm-3 col-12 pt-5'} >
-            <div className="text-center hovereffect">
-              <Link to={withPrefix(``)}>
-                <img src={image} style={{ margin: 0, padding: 0 }} />
-                <div className="overlay">
-                  <h2>
-                    ${product.project.extras.maxPrice}
-                  </h2>
-                </div>
-              </Link>
-            </div>
-            <div className="mt-3 row">
-              <div className="col ml-3" >
-                <div className="row">
-                  <h3 className="mb-0" >{product.project.title}</h3>
-                </div>
-                <div className="row">
-                  <p className="mb-0" >{product.project.vendor}</p>
-                </div>
-                {/* <p>${product.project.extras.maxPrice}</p> */}
-              </div>
-              <Button className="btn btn-outline-danger col-3 mr-3" onClick={() => this.props.addVariantToCart(product.project.variants[0].shopifyId, 1)}>Buy</Button>
-            </div>
-          </div>
-        </LazyLoad>
+          <Product addVariantToCart={this.props.addVariantToCart} client={this.props.client} key={product.project.title} product={product} />
         )
       }
     })

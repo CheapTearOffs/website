@@ -4,14 +4,14 @@ class VariantSelector extends Component {
   render() {
     return (
       <select
-        className="Product__option"
-        name={this.props.option.name}
-        key={this.props.option.name}
+        className={this.props.variantOption[0] != "" ? 'Product__option col-7' : 'd-none'}
+        name={this.props.name}
+        // key={this.props.option.name}
         onChange={this.props.handleOptionChange}
       >
-        {this.props.option.values.map((value) => {
+        {this.props.variantOption.map((value) => {
           return (
-            <option value={value} key={`${this.props.option.name}-${value}`}>{`${value}`}</option>
+            <option value={value} key={`${this.props.name}-${value}`}>{`${value}`}</option>
           )
         })}
       </select>
