@@ -154,6 +154,7 @@ export const pageQuery = graphql`
           productType
           title
           vendor
+          updatedAt
           images {
             originalSrc
           }
@@ -162,6 +163,10 @@ export const pageQuery = graphql`
           }
           variants {
             shopifyId
+            selectedOptions {
+              name
+              value
+            }
           }
         }
       }

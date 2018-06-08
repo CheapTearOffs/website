@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import LazyLoad from 'react-lazyload'
+import Link, { withPrefix } from 'gatsby-link'
+import { Button } from 'reactstrap'
+
 import VariantSelector from '../VariantSelector';
 
 class Product extends Component {
@@ -6,8 +10,8 @@ class Product extends Component {
      super(props);
  
      let defaultOptionValues = {};
-     this.props.product.options.forEach((selector) => {
-       defaultOptionValues[selector.name] = selector.values[0].value;
+     this.props.product.project.variants.forEach((selector) => {
+       defaultOptionValues[selector.selectedOptions.name] = selector.selectedOptions.value;
      });
      this.state = { selectedOptions: defaultOptionValues };
  
@@ -31,11 +35,12 @@ class Product extends Component {
      let selectedOptions = this.state.selectedOptions;
      selectedOptions[target.name] = target.value;
  
-     const selectedVariant = this.props.client.product.helpers.variantForOptions(this.props.product, selectedOptions)
+     const selectedVariant = this.props.client.product.helpers.variantForOptions(this.props.product.project, selectedOptions)
+     console.log(selectedVariant)
  
      this.setState({
        selectedVariant: selectedVariant,
-       selectedVariantImage: selectedVariant.attrs.image
+      //  selectedVariantImage: selectedVariant.attrs.image
      });
    }
  
@@ -46,30 +51,51 @@ class Product extends Component {
    }
  
    render() {
-     let variantImage = this.state.selectedVariantImage || this.props.product.images[0]
-     let variant = this.state.selectedVariant || this.props.product.variants[0]
+    let image = this.props.product.project.images[0].originalSrc
+     let variantImage = this.state.selectedVariantImage || this.props.product.project.images
+     let variant = this.state.selectedVariant || this.props.product.project.variants[0]
      let variantQuantity = this.state.selectedVariantQuantity || 1
-     let variantSelectors = this.props.product.options.map((option) => {
+     let variantSelectors = this.props.product.project.variants.map((option) => {
        return (
          <VariantSelector
            handleOptionChange={this.handleOptionChange}
-           key={option.id.toString()}
+          //  key={option.shopifyId}
            option={option}
          />
        );
      });
+    let variants = this.props.product.project.variants.map((variant) => {
+      return variant.selectedOptions.map((option) => {
+        if(option.value != "Default Title") {
+          return option.value
+        }
+      })
+    })
+
      return (
-       <div className="Product">
-         {this.props.product.images.length ? <img src={variantImage.src} alt={`${this.props.product.title} product shot`}/> : null}
-         <h5 className="Product__title">{this.props.product.title}</h5>
-         <span className="Product__price">${variant.price}</span>
-         {variantSelectors}
-         <label className="Product__option">
-           Quantity
-           <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
-         </label>
-         <button className="Product__buy button" onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
-       </div>
+      <LazyLoad key={this.props.product.project.title} height={200} once>
+        <div className={'col-sm-4 col-12 pt-5'} >
+          <div className="text-center hovereffect">
+            <Link to={withPrefix(``)}>
+              <img src={image} style={{ margin: 0, padding: 0, width: '100%' }} />
+              <div className="overlay">
+                <h2 className="vendor" >
+                  {this.props.product.project.title}
+                </h2>
+                <h2 className="price" >
+                  ${this.props.product.project.extras.maxPrice}
+                </h2>
+              </div>
+            </Link>
+          </div>
+          <div className="mt-3 container">
+            <div className="row justify-content-between">
+              <Button className="btn btn-outline-danger col-3" onClick={() => this.props.addVariantToCart(variant.shopifyId, 1)}>Buy</Button>
+              <VariantSelector handleOptionChange={this.handleOptionChange} name="Model" variantOption={variants} />
+            </div>
+          </div>
+        </div>
+      </LazyLoad>
      );
    }
  }

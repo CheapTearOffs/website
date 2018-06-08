@@ -21,7 +21,7 @@ class Store extends Component {
           <div className={'col-sm-3 col-12 pt-5'} >
             <div className="text-center hovereffect">
               <Link to={withPrefix(``)}>
-                <img src={image} style={{ margin: 0, padding: 0 }} />
+                <img src={image} style={{ margin: 0, padding: 0, width: '100%' }} />
                 <div className="overlay">
                   <h2>
                     {product.project.title} <br/>
