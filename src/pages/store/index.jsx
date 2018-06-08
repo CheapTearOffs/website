@@ -163,6 +163,9 @@ export const pageQuery = graphql`
           }
           variants {
             shopifyId
+            image {
+              originalSrc
+            }
             selectedOptions {
               name
               value

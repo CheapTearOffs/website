@@ -40,7 +40,7 @@ class Product extends Component {
  
      this.setState({
        selectedVariant: selectedVariant,
-      //  selectedVariantImage: selectedVariant.attrs.image
+       selectedVariantImage: selectedVariant.image.originalSrc
      });
    }
  
@@ -51,19 +51,9 @@ class Product extends Component {
    }
  
    render() {
-    let image = this.props.product.project.images[0].originalSrc
-     let variantImage = this.state.selectedVariantImage || this.props.product.project.images
-     let variant = this.state.selectedVariant || this.props.product.project.variants[0]
-     let variantQuantity = this.state.selectedVariantQuantity || 1
-     let variantSelectors = this.props.product.project.variants.map((option) => {
-       return (
-         <VariantSelector
-           handleOptionChange={this.handleOptionChange}
-          //  key={option.shopifyId}
-           option={option}
-         />
-       );
-     });
+    let variantImage = this.state.selectedVariantImage || this.props.product.project.images[0].originalSrc
+    let variant = this.state.selectedVariant || this.props.product.project.variants[0]
+    let variantQuantity = this.state.selectedVariantQuantity || 1
     let variants = this.props.product.project.variants.map((variant) => {
       return variant.selectedOptions.map((option) => {
         if(option.value != "Default Title") {
@@ -77,7 +67,7 @@ class Product extends Component {
         <div className={'col-sm-4 col-12 pt-5'} >
           <div className="text-center hovereffect">
             <Link to={withPrefix(``)}>
-              <img src={image} style={{ margin: 0, padding: 0, width: '100%' }} />
+              <img src={variantImage} style={{ margin: 0, padding: 0, width: '100%' }} />
               <div className="overlay">
                 <h2 className="vendor" >
                   {this.props.product.project.title}
