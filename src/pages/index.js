@@ -202,14 +202,14 @@ class Home extends Component {
                 <FormGroup  row>
                   <Col s={6} className="pb-2">
                     <Input  type="text"
-                            name="fName"
+                            name="First Name"
                             id="fName"
                             placeholder="First Name*"
                             required />
                   </Col>
                   <Col s={6} className="pb-2">
                     <Input  type="text"
-                            name="lName"
+                            name="Last Name"
                             id="lName"
                             placeholder="Last Name*"
                             required />
@@ -236,7 +236,7 @@ class Home extends Component {
                 </FormGroup>
                 <FormGroup row>
                   <Col s={6} className="pb-2">
-                    <Input type="select" name="event" id="event" required>
+                    <Input type="select" name="reason" id="event" required>
                       <option>Reason*</option>
                       <option>General</option>
                       <option>Sales</option>
