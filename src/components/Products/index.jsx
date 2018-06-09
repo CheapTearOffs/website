@@ -17,7 +17,7 @@ class Store extends Component {
       image = image.substring(0, image.indexOf('?'))
 
       return (
-        <LazyLoad key={product.project.title} once>
+        <LazyLoad key={product.project.title} height={200} once>
           <div className={'col-sm-4 col-12 pt-5'} >
             <div className="text-center hovereffect">
               <Link to={withPrefix(``)}>

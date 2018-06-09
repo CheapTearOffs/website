@@ -12,7 +12,7 @@ class Instagram extends Component {
 
       return (
          <div id="instagram" className="container-fluid">
-         <LazyLoad>
+         <LazyLoad height={200}>
            <div id={instafeedTarget} className="row no-gutters">
              <Instafeed
                limit="8"
