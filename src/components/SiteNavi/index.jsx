@@ -94,7 +94,7 @@ class SiteNavi extends Component {
                   : false
               }
             >
-              <NavLink href={withPrefix('/#home')}>Home</NavLink>
+              <NavLink href={withPrefix('/')}>Home</NavLink>
             </NavItem>
             {/* <NavItem active={location.hash === '#about' ? true : false}>
               <NavLink href={withPrefix('/#about')}>About</NavLink>
@@ -120,9 +120,6 @@ class SiteNavi extends Component {
             </UncontrolledDropdown> */}
             <NavItem active={location.hash === '/store' ? true : false}>
               <NavLink href={withPrefix('/store')}>Store</NavLink>
-            </NavItem>
-            <NavItem active={location.hash === '#contact' ? true : false}>
-              <NavLink href={withPrefix('/#contact')}>Contact</NavLink>
             </NavItem>
             <NavItem active={location.hash === '#enquire' ? true : false}>
               <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>

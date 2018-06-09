@@ -25,7 +25,6 @@ class Store extends Component {
                 <div className="overlay">
                   <h2>
                     {product.project.title} <br/>
-                    ${product.project.extras.maxPrice}
                   </h2>
                 </div>
               </Link>
