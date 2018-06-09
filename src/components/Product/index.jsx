@@ -64,7 +64,7 @@ class Product extends Component {
 
      return (
       <LazyLoad key={this.props.product.project.title} height={200} once>
-        <div className={'col-sm-4 col-12 pt-5'} >
+        <div className={'col-sm-4 col-12 pb-5'} >
           <div className="text-center hovereffect">
             <Link to={withPrefix(``)}>
               <img src={variantImage} style={{ margin: 0, padding: 0, width: '100%' }} />

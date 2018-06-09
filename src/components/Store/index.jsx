@@ -83,8 +83,23 @@ class Products extends Component {
           </div>
         </div>
         <PortfolioNavi projects={projects} {...this.props} />
-        <div id="portfolio-grid" className="row justify-content-center">
+        <div id="portfolio-grid" className="row justify-content-center pt-5">
           <div className="col-lg-9 col-11">
+            <div className="row justify-content-center">
+              <div className="col-lg-7 col-sm-10 col-11">
+                <p className="text-center"
+                   style={{
+                    // color: '#000',
+                    // lineHeight: '1',
+                    fontFamily: 'poppins',
+                    fontWeight: '700',
+                    fontSize: '2em',
+                  }}
+                >
+                  {this.props.showProduct}
+                </p>
+              </div>
+            </div>
             <div className="row justify-content-center">{products}</div>
             {/* <div className="row justify-content-center">{projectLinks}</div> */}
           </div>
