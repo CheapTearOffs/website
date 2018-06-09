@@ -197,7 +197,12 @@ class Home extends Component {
           </div>
           <div  className="row justify-content-center pt-3">
             <div  className="col-lg-6 col-sm-10">
-              <Form>
+              <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" method="post" action="#">
+                <input type="hidden" name="bot-field" />
+                <input type="text" name="fname" placeholder="First Name*" />
+                <button type="submit">Submit</button>
+              </form>
+              <Form name="contact" method="POST" data-netlify="true">
                 <FormGroup  row>
                   <Col s={6} className="pb-2">
                     <Input  type="text"
@@ -239,6 +244,7 @@ class Home extends Component {
                       <option>Reason*</option>
                       <option>General</option>
                       <option>Sales</option>
+                      <option>Sell Our Products</option>
                     </Input>
                   </Col>
                   <Col s={6} className="pb-2">

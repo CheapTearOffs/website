@@ -87,7 +87,7 @@ class Products extends Component {
           <div className="col-lg-9 col-11">
             <div className="row justify-content-center">
               <div className="col-lg-7 col-sm-10 col-11">
-                <p className="text-center"
+                <p className="text-center text-uppercase"
                    style={{
                     // color: '#000',
                     // lineHeight: '1',

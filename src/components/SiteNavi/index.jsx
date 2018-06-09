@@ -124,7 +124,7 @@ class SiteNavi extends Component {
             <NavItem active={location.hash === '#enquire' ? true : false}>
               <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className={location.pathname != '/store' ? 'd-none' : ''} >
               <NavLink onClick={this.props.handleCartOpen}>Cart</NavLink>
             </NavItem>]
           </Nav>
