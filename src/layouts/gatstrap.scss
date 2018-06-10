@@ -160,7 +160,8 @@ img {
 .title {
   line-height: 1;
   font-weight: 700;
-  font-size: 5em;
+  // font-size: 5em;
+  font-size: 9vw;
   &-2 {
     font-weight: 300;
   }
@@ -168,7 +169,7 @@ img {
     font: {
       family: 'comfortaa';
       weight: 400;
-      size: 1.5em;
+      size: 3vw;
     }
   }
 }

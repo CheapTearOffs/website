@@ -10,10 +10,6 @@ import Product from '../Product';
 import VariantSelector from '../VariantSelector'
 
 class Products extends Component {
-  // shouldComponentUpdate() {
-  //   return false;
-  // }
-
   render() {
     const { location, projects, showProduct } = this.props
     const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
@@ -50,34 +46,14 @@ class Products extends Component {
 
     return (
       <div id="portfolio" className="container-fluid bg-even py-5">
-        {/* <div id="portfolio-title" className="row justify-content-center">
-          <div className="col-lg-7 col-sm-10 col-11">
-            <p
-              className="text-center"
-              style={{
-                color: '#000',
-                lineHeight: '1',
-                fontFamily: 'comfortaa',
-                fontWeight: '300',
-                fontSize: '1.5em',
-              }}
-            >
-              Let's shop now
-            </p>
-          </div>
-        </div> */}
         <div id="portfolio-title" className="row justify-content-center">
           <div className="col-lg-7 col-sm-10 col-11">
-            <p
-              className="text-center"
-              style={{
-                color: '#000',
-                lineHeight: '1',
-                fontFamily: 'poppins',
-                fontWeight: '700',
-                fontSize: '3em',
-              }}
-            >
+            <p className="text-center"
+               style={{ color: '#000',
+                        lineHeight: '1',
+                        fontFamily: 'poppins',
+                        fontWeight: '700',
+                        fontSize: '3em',}} >
               Let's shop now
             </p>
           </div>
@@ -89,8 +65,6 @@ class Products extends Component {
               <div className="col-lg-7 col-sm-10 col-11">
                 <p className="text-center text-uppercase"
                    style={{
-                    // color: '#000',
-                    // lineHeight: '1',
                     fontFamily: 'poppins',
                     fontWeight: '700',
                     fontSize: '2em',
@@ -101,7 +75,6 @@ class Products extends Component {
               </div>
             </div>
             <div className="row justify-content-center">{products}</div>
-            {/* <div className="row justify-content-center">{projectLinks}</div> */}
           </div>
         </div>
       </div>

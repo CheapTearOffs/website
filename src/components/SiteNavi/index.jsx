@@ -43,11 +43,9 @@ class SiteNavi extends Component {
         // dark='true'
         sticky="top"
         expand="md"
+        dark
       >
-        <NavbarBrand
-          href={withPrefix('/')}
-          // className={color === 'primary' ? 'invisible' : 'navbar-brand'}
-        >
+        <NavbarBrand href={withPrefix('/')} >
           <img src={logo} width="150" style={{ margin: 0, padding: 0 }} />
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />

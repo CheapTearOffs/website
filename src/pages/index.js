@@ -173,7 +173,7 @@ class Home extends Component {
               <AnimatedTypingComponent />
             </div>
           </div>
-          <div  className="row justify-content-center">
+          <div  className="row justify-content-center mt-3">
             <p  className="title title-3 text-center col-lg-8 col-9 text-white">
               OEM quality - WAY less $$$
             </p>

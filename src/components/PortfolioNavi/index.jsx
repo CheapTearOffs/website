@@ -32,8 +32,8 @@ class PortfolioNavi extends Component {
     })
 
     return (
-      <div className="row justify-content-center d-none d-md-flex">
-        <div className="col-7">
+      <div className="row justify-content-center">
+        <div className="col-md-7 col-11">
           <ul className="nav justify-content-center text-uppercase">
             {/* <li className="nav-item">
               <a className="nav-link" style={{cursor: 'pointer'}} onClick={() => this.props.showHideProjects("All")}>All</a>

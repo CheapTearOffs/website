@@ -18,7 +18,7 @@ class Store extends Component {
 
       return (
         <LazyLoad key={product.project.title} height={200} once>
-          <div className={'col-sm-4 col-12 pt-5'} >
+          <div className={'col-sm-4 col-6 pt-5'} >
             <div className="text-center hovereffect">
               <Link to={withPrefix(``)}>
                 <img src={image} style={{ margin: 0, padding: 0, width: '100%' }} />
