@@ -135,16 +135,18 @@ class Home extends Component {
       bgLinks.push(get(data, 'node.sizes.src'))
     })
 
+    let vendor = projects.map((product) => {
+      return (
+        <span>
+          <span className="text-danger">{product.project.vendor}</span>
+          <Backspace count={10} delay={1000} />
+        </span>
+      )
+    })
+
     const AnimatedTypingComponent = () => (
       <Typist cursorClassName="text-white" loop={true} speed={140}>
-        <span className="text-danger">Fox</span>
-        <Backspace count={3} delay={1000} />
-        <span className="text-danger">Dragon</span>
-        <Backspace count={6} delay={1000} />
-        <span className="text-danger">Oakley</span>
-        <Backspace count={6} delay={1000} />
-        <span className="text-danger">Spy</span>
-        <Backspace count={3} delay={1000} />
+        {vendor}
       </Typist>
     )
 

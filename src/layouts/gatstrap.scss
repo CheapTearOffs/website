@@ -198,9 +198,9 @@ img {
     img {
       margin: 0;
       padding: 0;
-      filter: grayscale(100%);
+      // filter: grayscale(100%);
       &:hover {
-        filter: grayscale(0);
+        // filter: grayscale(0);
       }
     }
   }
