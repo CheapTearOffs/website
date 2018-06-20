@@ -28,11 +28,6 @@ import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/cheaptearoffs_logo_FullWhite.svg'
 import signature from '../layouts/img/signature.svg'
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faPhone from '@fortawesome/fontawesome-free-solid/faPhone'
-import faLocation from '@fortawesome/fontawesome-free-solid/faLocationArrow'
-import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope'
-
 const client = Shopify.buildClient({
   storefrontAccessToken: 'd58c703d46500efe4996cc38db86bfc2',
   domain: 'cheaptearoffsstore.myshopify.com'
