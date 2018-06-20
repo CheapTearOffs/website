@@ -24,9 +24,9 @@ import Products from '../components/Products'
 import Instagram from '../components/Instagram'
 import Cart from '../components/Cart'
 
-import selfImage from '../layouts/img/self-portrait.jpg'
-import logo from '../layouts/img/cheaptearoffs_logo_FullWhite.svg'
-import signature from '../layouts/img/signature.svg'
+// import selfImage from '../layouts/img/self-portrait.jpg'
+// import logo from '../layouts/img/cheaptearoffs_logo_FullWhite.svg'
+// import signature from '../layouts/img/signature.svg'
 
 const client = Shopify.buildClient({
   storefrontAccessToken: 'd58c703d46500efe4996cc38db86bfc2',
