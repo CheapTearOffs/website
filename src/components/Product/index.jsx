@@ -66,7 +66,7 @@ class Product extends Component {
       <LazyLoad key={this.props.product.project.title} height={200} once>
         <div className={'col-sm-4 col-12 pb-5'} >
           <div className="text-center hovereffect">
-            <Link to={withPrefix(``)}>
+            {/* <Link to={withPrefix(``)}> */}
               <img src={variantImage} style={{ margin: 0, padding: 0, width: '100%' }} />
               <div className="overlay">
                 <h2 className="vendor" >
@@ -76,7 +76,7 @@ class Product extends Component {
                   ${this.props.product.project.extras.maxPrice}
                 </h2>
               </div>
-            </Link>
+            {/* </Link> */}
           </div>
           <div className="mt-3 container">
             <div className="row justify-content-between">

@@ -20,14 +20,14 @@ class Store extends Component {
         <LazyLoad key={product.project.title} height={200} once>
           <div className={'col-sm-4 col-6 pt-5'} >
             <div className="text-center hovereffect">
-              <Link to={withPrefix(``)}>
+              {/* <Link to={withPrefix(``)}> */}
                 <img src={image} style={{ margin: 0, padding: 0, width: '100%' }} />
                 <div className="overlay">
                   <h2>
                     {product.project.title} <br/>
                   </h2>
                 </div>
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
         </LazyLoad>
