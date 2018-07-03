@@ -25,7 +25,7 @@ import Instagram from '../components/Instagram'
 import Cart from '../components/Cart'
 
 // import selfImage from '../layouts/img/self-portrait.jpg'
-// import logo from '../layouts/img/cheaptearoffs_logo_FullWhite.svg'
+import logo from '../layouts/img/cheap_tearoffs_logo_america_black.svg'
 // import signature from '../layouts/img/signature.svg'
 
 const client = Shopify.buildClient({
@@ -156,8 +156,9 @@ class Home extends Component {
 
         <div  id="home"
               className="container-fluid py-11"
-              style={{  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${bgLinks[0]})`}}>
-          <div className="row justify-content-center">
+              // style={{  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${bgLinks[0]})`}}
+              >
+          {/* <div className="row justify-content-center">
             <p className="title text-center col-12 text-white">
               Spend LESS
             </p>
@@ -179,6 +180,11 @@ class Home extends Component {
             <a  className="button-1 badge badge-pill badge-danger" href={withPrefix(`/store`)}>
               SHOP NOW
             </a>
+          </div> */}
+          <div className="row justify-content-center">
+            <div className="col-9">
+              <img src={logo} />
+            </div>
           </div>
         </div>
 
