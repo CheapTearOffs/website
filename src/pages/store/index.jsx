@@ -158,10 +158,8 @@ export const pageQuery = graphql`
           images {
             originalSrc
           }
-          extras {
-            maxPrice
-          }
           variants {
+            price
             shopifyId
             image {
               originalSrc

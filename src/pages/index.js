@@ -304,9 +304,6 @@ export const projectQuery = graphql`
           images {
             originalSrc
           }
-          extras {
-            maxPrice
-          }
         }
       }
     }

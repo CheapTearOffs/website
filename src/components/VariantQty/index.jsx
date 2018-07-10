@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 
-class VariantSelector extends Component {
+class VariantQty extends Component {
   render() {
-    let valueModel = []
-
+    let valueQty = []
     return (
       <select
-        className={this.props.variantOption[0][0].name == "Model" && this.props.productType != "Lenses" ? 'Product__option col-12' : 'd-none'}
+        className={this.props.productType != "Lenses" ? 'Product__option col-7 mt-2' : 'd-none'}
         name={this.props.name}
         // key={this.props.option.name}
         onChange={this.props.handleOptionChange}
       >
-        <option key={`${this.props.name}-default`}>Select*</option>
         {this.props.variantOption.map((option) => {
           return option.map((value) => {
-            if(value.name == "Model" && !valueModel.includes(value.value)) {
-              valueModel.push(value.value)
+            if(value.name == "Qty" && !valueQty.includes(value.value)) {
+              valueQty.push(value.value)
               return (
                 <option value={value.value} key={`${this.props.name}-${value.value}`}>{`${value.value}`}</option>
               )
@@ -27,4 +25,4 @@ class VariantSelector extends Component {
   }
 }
 
-export default VariantSelector;
+export default VariantQty;
