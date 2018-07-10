@@ -62,7 +62,7 @@ class Product extends Component {
     let variantImage = this.state.selectedVariantImage || this.props.product.project.images[0].originalSrc
     let variant = this.state.selectedVariant || this.props.product.project.variants[0]
     let variantQuantity = this.state.selectedVariantQuantity || 1
-    let variantPrice = this.state.selectedVariantPrice || this.props.product.project.variants[0].price
+    let variantPrice = variant.price
     let variants = this.props.product.project.variants.map((variant) => {
       return variant.selectedOptions.map((option) => {
         return option

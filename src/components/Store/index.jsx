@@ -60,9 +60,9 @@ class Products extends Component {
         </div>
         <PortfolioNavi projects={projects} {...this.props} />
         <div id="portfolio-grid" className="row justify-content-center pt-5">
-          <div className="col-lg-9 col-11">
+          <div className="col-xl-6 col-lg-9 col-11">
             <div className="row justify-content-center">
-              <div className="col-lg-7 col-sm-10 col-11">
+              <div className="">
                 <p className="text-center text-uppercase"
                    style={{
                     fontFamily: 'poppins',
