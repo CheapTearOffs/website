@@ -6,7 +6,7 @@ class VariantSelector extends Component {
 
     return (
       <select
-        className={this.props.variantOption[0][0].name == "Model" && this.props.productType != "Lenses" ? 'Product__option col-12' : 'd-none'}
+        className={this.props.variantOption[0][0].name == "Model" && this.props.productType == "Tear-Offs" ? 'Product__option col-12' : 'd-none'}
         name={this.props.name}
         // key={this.props.option.name}
         onChange={this.props.handleOptionChange}

@@ -5,7 +5,7 @@ class VariantQty extends Component {
     let valueQty = []
     return (
       <select
-        className={this.props.productType != "Lenses" ? 'Product__option col-7 mt-2' : 'd-none'}
+        className={this.props.productType == "Tear-Offs" ? 'Product__option col-7 mt-2' : 'd-none'}
         name={this.props.name}
         // key={this.props.option.name}
         onChange={this.props.handleOptionChange}
