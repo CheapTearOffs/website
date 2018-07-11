@@ -156,7 +156,7 @@ class Home extends Component {
 
         <div  id="home"
               className="container-fluid py-11"
-              style={{  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${bgLinks[1]})`}}
+              style={{  background: `linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url(${bgLinks[1]})`}}
               >
           {/* <div className="row justify-content-center">
             <p className="title text-center col-12 text-white">
