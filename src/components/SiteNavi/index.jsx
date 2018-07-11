@@ -16,7 +16,7 @@ import {
 } from 'reactstrap'
 import { NavLink as CartLink } from 'react-router-dom';
 
-import logo from '../../layouts/img/cheaptearoffs_logo_4thOfJuly.svg'
+import logo from '../../layouts/img/cheaptearoffs_logo_FullWhite.svg'
 
 class SiteNavi extends Component {
   constructor(props) {
