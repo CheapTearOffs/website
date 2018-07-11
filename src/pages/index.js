@@ -26,6 +26,7 @@ import Cart from '../components/Cart'
 
 // import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/cheaptearoffs_logo_OutlineBlack.svg'
+import bgHome from '../layouts/img/bg_home_helmet2.png'
 // import signature from '../layouts/img/signature.svg'
 
 const client = Shopify.buildClient({
@@ -156,7 +157,7 @@ class Home extends Component {
 
         <div  id="home"
               className="container-fluid py-11"
-              style={{  background: `linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url(${bgLinks[1]})`}}
+              style={{  background: `linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url(${bgHome})`}}
               >
           {/* <div className="row justify-content-center">
             <p className="title text-center col-12 text-white">
