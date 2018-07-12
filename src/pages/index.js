@@ -20,6 +20,7 @@ import Shopify from 'shopify-buy'
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
+import Store from '../components/Store'
 import Products from '../components/Products'
 import Instagram from '../components/Instagram'
 import Cart from '../components/Cart'
@@ -42,7 +43,8 @@ class Home extends Component {
       isCartOpen: false,
       checkout: {lineItems: []},
       products: [],
-      shop: {}
+      shop: {},
+      showProduct: 'Lenses'
     }
 
     this.handleCartClose = this.handleCartClose.bind(this);
@@ -50,6 +52,7 @@ class Home extends Component {
     this.addVariantToCart = this.addVariantToCart.bind(this);
     this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
     this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
+    this.showHideProjects = this.showHideProjects.bind(this);
   }
 
   componentWillMount() {
@@ -119,17 +122,19 @@ class Home extends Component {
     });
   }
 
+  showHideProjects(type) {
+    console.log("type: " + type)
+    this.setState({
+      showProduct: type
+    })
+  }
+
   render() {
     const { transition } = this.props
 
-    const bgLinks = []
-    const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+    // const bgLinks = []
+    // const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const projects = this.props.data.allShopifyProduct.edges
-
-    const bgImages = this.props.data.allImageSharp.edges
-    bgImages.forEach((data, i) => {
-      bgLinks.push(get(data, 'node.sizes.src'))
-    })
 
     let vendor = projects.map((product) => {
       return (
@@ -157,31 +162,7 @@ class Home extends Component {
 
         <div  id="home"
               className="container-fluid py-11"
-              style={{  background: `linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url(${bgHome})`}}
-              >
-          {/* <div className="row justify-content-center">
-            <p className="title text-center col-12 text-white">
-              Spend LESS
-            </p>
-          </div>
-          <div className="row justify-content-center">
-            <p  className="title title-2 text-center col-md-auto text-white">
-              New Arrivals
-            </p>
-            <div  className="title text-center col-md-auto">
-              <AnimatedTypingComponent />
-            </div>
-          </div>
-          <div  className="row justify-content-center mt-3">
-            <p  className="title title-3 text-center col-lg-8 col-9 text-white">
-              OEM quality - WAY less $$$
-            </p>
-          </div>
-          <div  className="row justify-content-center">
-            <a  className="button-1 badge badge-pill badge-danger" href={withPrefix(`/store`)}>
-              SHOP NOW
-            </a>
-          </div> */}
+              style={{  background: `linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url(${bgHome})`}}>
           <div className="row justify-content-center">
             <div className="col-9">
               <img src={logo} />
@@ -189,9 +170,21 @@ class Home extends Component {
           </div>
         </div>
 
-        <Products products={this.state.products} client={client} addVariantToCart={this.addVariantToCart} projects={projects} {...this.props} />
+        {/* <Products products={this.state.products} client={client} addVariantToCart={this.addVariantToCart} projects={projects} {...this.props} /> */}
 
-        <div  id="enquire" className="container-fluid py-5 bg-white">
+        <Store  showProduct={this.state.showProduct} 
+                client={client}
+                addVariantToCart={this.addVariantToCart} 
+                showHideProjects={this.showHideProjects} 
+                projects={projects} {...this.props} />
+
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+            <div className="col-9 border-top"></div>
+          </div>
+        </div>
+
+        <div  id="enquire" className="container-fluid py-6 bg-white">
           <div  id="portfolio-title" className="row justify-content-center">
             <div  className="col-lg-7 col-sm-10 col-11">
               <p  className="title text-center text-danger" style={{fontSize: '3em'}}>
@@ -269,6 +262,12 @@ class Home extends Component {
           </div>
         </div>
 
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+            <div className="col-9 border-top"></div>
+          </div>
+        </div>
+
         <Instagram />
 
         <Cart
@@ -295,24 +294,27 @@ export const projectQuery = graphql`
         author
       }
     }
-    allShopifyProduct(limit: 6) {
+    allShopifyProduct {
       totalCount
       edges {
         project: node {
           id
+          productType
           title
           vendor
           images {
             originalSrc
           }
-        }
-      }
-    }
-    allImageSharp {
-      edges {
-        node {
-          sizes {
-            src
+          variants {
+            price
+            shopifyId
+            image {
+              originalSrc
+            }
+            selectedOptions {
+              name
+              value
+            }
           }
         }
       }

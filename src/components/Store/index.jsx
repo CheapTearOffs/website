@@ -45,8 +45,8 @@ class Products extends Component {
     })
 
     return (
-      <div id="portfolio" className="container-fluid bg-even py-5">
-        <div id="portfolio-title" className="row justify-content-center">
+      <div id="store" className="container-fluid bg-even py-6 bg-white">
+        <div id="store-title" className="row justify-content-center">
           <div className="col-lg-7 col-sm-10 col-11">
             <p className="text-center"
                style={{ color: '#000',
@@ -59,7 +59,7 @@ class Products extends Component {
           </div>
         </div>
         <PortfolioNavi projects={projects} {...this.props} />
-        <div id="portfolio-grid" className="row justify-content-center pt-5">
+        <div id="store-grid" className="row justify-content-center pt-5">
           <div className="col-xl-6 col-lg-9 col-11">
             <div className="row justify-content-center">
               <div className="">

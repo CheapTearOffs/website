@@ -17,6 +17,7 @@ import {
 import { NavLink as CartLink } from 'react-router-dom';
 
 import logo from '../../layouts/img/cheaptearoffs_logo_FullWhite.svg'
+import cartIcon from '../../layouts/img/shopping-cart-empty-side-view.svg'
 
 class SiteNavi extends Component {
   constructor(props) {
@@ -40,7 +41,6 @@ class SiteNavi extends Component {
       <Navbar
         className="text-uppercase"
         color="dark"
-        // dark='true'
         sticky="top"
         expand="md"
         dark
@@ -52,38 +52,18 @@ class SiteNavi extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href={withPrefix('/')}>Home</NavLink>
+              <NavLink href={withPrefix('/#home')}>Home</NavLink>
             </NavItem>
-            {/* <NavItem active={location.hash === '#about' ? true : false}>
-              <NavLink href={withPrefix('/#about')}>About</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Portfolio
-              </DropdownToggle>
-              <DropdownMenu>
-                <Link to={withPrefix(`/portfolio`)}>
-                  <DropdownItem
-                    active={
-                      location.pathname === '/portfolio' && location.hash === ''
-                        ? true
-                        : false
-                    }
-                  >
-                    All
-                  </DropdownItem>
-                </Link>
-                {catLinks}
-              </DropdownMenu>
-            </UncontrolledDropdown> */}
             <NavItem>
-              <NavLink href={withPrefix('/store')}>Store</NavLink>
+              <NavLink href={withPrefix('/#store')}>Store</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
             </NavItem>
-            <NavItem className={location.pathname != '/store' ? 'd-none' : ''} >
-              <NavLink onClick={this.props.handleCartOpen}>Cart</NavLink>
+            <NavItem>
+              <NavLink onClick={this.props.handleCartOpen}>
+                <img src={cartIcon} width="21" />
+              </NavLink>
             </NavItem>]
           </Nav>
         </Collapse>
