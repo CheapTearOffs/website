@@ -185,12 +185,12 @@ img {
 
 /* HEADER */
 #home {
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url('./img/bg_home_helmet2.png');
+  background-image: url('./img/bg_home_helmet2.png');
   background-size: auto 80%;
   background-repeat: no-repeat;
   background-position: bottom;
-  padding-left: 0;
-  padding-right: 0;
+  // padding-left: 0;
+  // padding-right: 0;
 }
 
 #instagram {
