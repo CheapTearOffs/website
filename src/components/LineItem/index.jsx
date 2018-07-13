@@ -10,11 +10,13 @@ class LineItem extends Component {
 
   decrementQuantity(lineItemId) {
     const updatedQuantity = this.props.line_item.quantity - 1
+
     this.props.updateQuantityInCart(lineItemId, updatedQuantity);
   }
 
   incrementQuantity(lineItemId) {
     const updatedQuantity = this.props.line_item.quantity + 1
+
     this.props.updateQuantityInCart(lineItemId, updatedQuantity);
   }
 

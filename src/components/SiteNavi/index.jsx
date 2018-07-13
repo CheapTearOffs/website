@@ -62,7 +62,7 @@ class SiteNavi extends Component {
             </NavItem>
             <NavItem>
               <NavLink onClick={this.props.handleCartOpen}>
-                <img src={cartIcon} width="21" />
+                <img src={cartIcon} width="16" />
               </NavLink>
             </NavItem>]
           </Nav>

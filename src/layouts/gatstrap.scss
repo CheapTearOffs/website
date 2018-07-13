@@ -185,11 +185,10 @@ img {
 
 /* HEADER */
 #home {
-  // background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)), url('./img/self-portrait.jpg');
-  // background-color: #000000;
-  background-size: 80% !important;
-  background-repeat: no-repeat !important;
-  background-position: bottom !important;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url('./img/bg_home_helmet2.png');
+  background-size: auto 80%;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 #instagram {

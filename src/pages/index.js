@@ -44,7 +44,8 @@ class Home extends Component {
       checkout: {lineItems: []},
       products: [],
       shop: {},
-      showProduct: 'Lenses'
+      showProduct: 'Lenses',
+      cartCount: 0
     }
 
     this.handleCartClose = this.handleCartClose.bind(this);
@@ -158,13 +159,13 @@ class Home extends Component {
                   color="primary"
                   projects={projects}
                   handleCartOpen={this.handleCartOpen}
+                  cartCount={this.state.cartCount}
                   {...this.props}/>
 
         <div  id="home"
-              className="container-fluid py-11"
-              style={{  background: `linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.85)), url(${bgHome})`}}>
+              className="container-fluid py-11">
           <div className="row justify-content-center">
-            <div className="col-9">
+            <div className="col-md-9 col-11">
               <img src={logo} />
             </div>
           </div>
