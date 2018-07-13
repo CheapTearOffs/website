@@ -165,7 +165,7 @@ class Home extends Component {
         <div  id="home"
               className="container-fluid py-11">
           <div className="row justify-content-center">
-            <div className="col-md-9 col-11">
+            <div className="col-xl-7 col-md-9 col-11">
               <img src={logo} />
             </div>
           </div>
