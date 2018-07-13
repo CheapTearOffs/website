@@ -163,7 +163,7 @@ class Home extends Component {
                   {...this.props}/>
 
         <div  id="home"
-              className="container-fluid py-11">
+              className="container-fluid py-11 no-gutter">
           <div className="row justify-content-center">
             <div className="col-xl-7 col-md-9 col-12">
               <img src={logo} />
