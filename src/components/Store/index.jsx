@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload'
 import Link, { withPrefix } from 'gatsby-link'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
-import { Button } from 'reactstrap'
+import { Alert } from 'reactstrap'
 
 import PortfolioNavi from '../PortfolioNavi'
 import Product from '../Product';
@@ -57,6 +57,12 @@ class Products extends Component {
               Let's shop now
             </p>
           </div>
+        </div>
+        <div className="row justify-content-center">
+          <Alert color="danger" className="col-xl-6 col-lg-9 col-11">
+            <h4 className="alert-heading">NOTICE:</h4>
+            <p>Shipping on all orders placed between 7/20-08/03 will be delayed a few days. Thank you for your patience!</p>
+          </Alert>
         </div>
         <PortfolioNavi projects={projects} {...this.props} />
         <div id="store-grid" className="row justify-content-center pt-5">
