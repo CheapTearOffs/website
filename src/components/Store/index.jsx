@@ -61,7 +61,7 @@ class Products extends Component {
         <div className="row justify-content-center">
           <Alert color="danger" className="col-xl-6 col-lg-9 col-11">
             <h4 className="alert-heading">NOTICE:</h4>
-            <p>Shipping on all orders will not be shipped between 7/30-8/03. Thank you for your patience!</p>
+            <p>Due to unforeseen circumstances we will not be making any shipments until Monday, Sept. 10th. Sorry for the inconvenience!</p>
           </Alert>
         </div>
         <PortfolioNavi projects={projects} {...this.props} />
