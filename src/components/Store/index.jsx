@@ -58,12 +58,12 @@ class Products extends Component {
             </p>
           </div>
         </div>
-        <div className="row justify-content-center">
+        {/* <div className="row justify-content-center">
           <Alert color="danger" className="col-xl-6 col-lg-9 col-11">
             <h4 className="alert-heading">NOTICE:</h4>
             <p>Due to unforeseen circumstances we will not be making any shipments until Monday, Sept. 10th. Sorry for the inconvenience!</p>
           </Alert>
-        </div>
+        </div> */}
         <PortfolioNavi projects={projects} {...this.props} />
         <div id="store-grid" className="row justify-content-center pt-5">
           <div className="col-xl-6 col-lg-9 col-11">
