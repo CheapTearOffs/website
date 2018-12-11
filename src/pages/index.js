@@ -162,11 +162,12 @@ class Home extends Component {
                   cartCount={this.state.cartCount}
                   {...this.props}/>
 
-        <div  id="home"
-              className="container-fluid py-11">
-          <div className="row justify-content-center">
-            <div className="col-xl-7 col-md-9 col-12">
-              <img src={logo} />
+        <div  id="home">
+          <div id="home-container" className="container-fluid py-17">
+            <div className="row justify-content-center">
+              <div className="col-md-6 col-12">
+                <img src={logo} />
+              </div>
             </div>
           </div>
         </div>
