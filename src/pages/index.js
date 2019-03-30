@@ -270,7 +270,7 @@ class Home extends Component {
           </div>
         </div>
 
-        <Instagram />
+        {/* <Instagram /> */}
 
         <Cart
           checkout={this.state.checkout}
