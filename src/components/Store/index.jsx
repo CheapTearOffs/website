@@ -56,21 +56,25 @@ class Products extends Component {
                         fontSize: '3em',}} >
               Let's shop now
             </p>
-            <p  className="text-center text-uppercase"
-                style={{  fontFamily: 'poppins',
-                          fontWeight: '700',
-                          fontSize: '3em',
-                          color: '#ff0000',
-                          WebkitTextFillColor: 'white', /* Will override color (regardless of order) */
-                          WebkitTextStrokeWidth: '3px',
-                          WebkitTextStrokeColor: '#ff0000' }}>
-                {this.props.showProduct}
-            </p>
           </div>
         </div>
         <PortfolioNavi projects={projects} {...this.props} />
         <div id="store-grid" className="row justify-content-center pt-5">
           <div className="col-xl-6 col-lg-9 col-11">
+            <div className="row justify-content-center">
+              <div className="">
+                <p  className="text-center text-uppercase"
+                    style={{  fontFamily: 'poppins',
+                              fontWeight: '700',
+                              fontSize: '3em',
+                              color: '#ff0000',
+                              WebkitTextFillColor: 'white', /* Will override color (regardless of order) */
+                              WebkitTextStrokeWidth: '3px',
+                              WebkitTextStrokeColor: '#ff0000' }}>
+                    {this.props.showProduct}
+                </p>
+              </div>
+            </div>
             <div className="row justify-content-center">{products}</div>
           </div>
         </div>
