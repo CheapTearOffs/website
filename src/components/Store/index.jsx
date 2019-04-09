@@ -52,10 +52,7 @@ class Products extends Component {
                     style={{  fontFamily: 'poppins',
                               fontWeight: '700',
                               fontSize: '3em',
-                              color: '#ff0000',
-                              WebkitTextFillColor: 'white', /* Will override color (regardless of order) */
-                              WebkitTextStrokeWidth: '3px',
-                              WebkitTextStrokeColor: '#ff0000' }}>
+                              color: '#000000', }}>
                     {this.props.showProduct}
                 </p>
               </div>
