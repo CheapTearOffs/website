@@ -146,13 +146,13 @@ img {
     }
   }
 }
-#portfolio .nav {
+#store-nav .nav {
   li a {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: smaller;
-    color: rgba(0, 0, 0, 0.5);
+    // font-family: 'Roboto Condensed', sans-serif;
+    // font-size: smaller;
+    color: #ff0000;
   }
-  li.active a {
+  li:hover a {
     color: rgba(0, 0, 0, 0.9);
   }
 }

@@ -4,7 +4,7 @@ import Link, { withPrefix } from 'gatsby-link'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
 
-import PortfolioNavi from '../PortfolioNavi'
+import StoreNavi from '../StoreNavi'
 import Product from '../Product';
 
 class Store extends Component {

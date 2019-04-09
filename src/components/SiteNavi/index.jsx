@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import get from 'lodash/get'
-import Link, { withPrefix } from 'gatsby-link'
+import { withPrefix } from 'gatsby-link'
 import {
   Collapse,
   Navbar,
@@ -9,12 +8,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap'
-import { NavLink as CartLink } from 'react-router-dom';
 
 import logo from '../../layouts/img/cheaptearoffs_logo_FullWhite.svg'
 import cartIcon from '../../layouts/img/shopping-cart-empty-side-view.svg'
@@ -35,8 +29,6 @@ class SiteNavi extends Component {
   }
 
   render() {
-    const { location, title, color, projects } = this.props
-
     return (
       <Navbar
         className="text-uppercase"

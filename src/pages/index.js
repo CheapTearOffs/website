@@ -1,34 +1,23 @@
 import React, { Component } from 'react'
-import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Img from 'gatsby-image'
-import Link, { withPrefix, navigateTo } from 'gatsby-link'
 import {
   Button,
   Col,
   Form,
   FormGroup,
-  FormFeedback,
-  Label,
   Input,
-  FormText,
 } from 'reactstrap'
 import Typist, { Backspace } from 'react-typing-animation'
-import Instafeed from 'react-instafeed'
 import Shopify from 'shopify-buy'
 
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
 import Store from '../components/Store'
-import Products from '../components/Products'
 import Instagram from '../components/Instagram'
 import Cart from '../components/Cart'
 
-// import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/cheaptearoffs_logo_OutlineBlack.svg'
-import bgHome from '../layouts/img/bg_home_helmet2.png'
-// import signature from '../layouts/img/signature.svg'
 
 const client = Shopify.buildClient({
   storefrontAccessToken: 'd58c703d46500efe4996cc38db86bfc2',
@@ -44,7 +33,8 @@ class Home extends Component {
       checkout: {lineItems: []},
       products: [],
       shop: {},
-      showProduct: 'Lenses',
+      showProduct: '',
+      showStoreNav: false,
       cartCount: 0
     }
 
@@ -54,6 +44,7 @@ class Home extends Component {
     this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
     this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
     this.showHideProjects = this.showHideProjects.bind(this);
+    this.toggleStoreNav = this.toggleStoreNav.bind(this);
   }
 
   componentWillMount() {
@@ -130,11 +121,14 @@ class Home extends Component {
     })
   }
 
+  toggleStoreNav() {
+    this.setState({
+      showStoreNav: !this.showStoreNav
+    })
+  }
+
   render() {
     const { transition } = this.props
-
-    // const bgLinks = []
-    // const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const projects = this.props.data.allShopifyProduct.edges
 
     let vendor = projects.map((product) => {
@@ -172,9 +166,9 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* <Products products={this.state.products} client={client} addVariantToCart={this.addVariantToCart} projects={projects} {...this.props} /> */}
-
         <Store  showProduct={this.state.showProduct} 
+                showStoreNav={this.state.showStoreNav}
+                toggleStoreNav={this.toggleStoreNav}
                 client={client}
                 addVariantToCart={this.addVariantToCart} 
                 showHideProjects={this.showHideProjects} 
@@ -270,7 +264,7 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* <Instagram /> */}
+        <Instagram />
 
         <Cart
           checkout={this.state.checkout}

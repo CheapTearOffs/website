@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import LazyLoad from 'react-lazyload'
-import Link, { withPrefix } from 'gatsby-link'
 import { Button } from 'reactstrap'
 
 import VariantSelector from '../VariantSelector';
@@ -48,7 +47,6 @@ class Product extends Component {
  
     this.setState({
      selectedVariant: selectedVariant,
-    //  selectedVariantImage: selectedVariant.image.originalSrc
     });
   }
  
@@ -61,7 +59,6 @@ class Product extends Component {
   render() {
     let variantImage = this.state.selectedVariantImage || this.props.product.project.images[0].originalSrc
     let variant = this.state.selectedVariant || this.props.product.project.variants[0]
-    let variantQuantity = this.state.selectedVariantQuantity || 1
     let variantPrice = variant.price
     let variants = this.props.product.project.variants.map((variant) => {
       return variant.selectedOptions.map((option) => {
@@ -70,10 +67,9 @@ class Product extends Component {
     })
 
     return (
-    <LazyLoad key={this.props.product.project.title} height={200} once>
-      <div className={'col-sm-4 col-12 pb-5'} >
-        <div className="text-center hovereffect">
-          {/* <Link to={withPrefix(``)}> */}
+      <LazyLoad key={this.props.product.project.title} height={200} once>
+        <div className={'col-sm-4 col-12 pb-5'} >
+          <div className="text-center hovereffect">
             <img src={variantImage} style={{ margin: 0, padding: 0, width: '100%' }} />
             <div className="overlay">
               <h2 className="vendor" >
@@ -83,19 +79,18 @@ class Product extends Component {
                 ${variantPrice}
               </h2>
             </div>
-          {/* </Link> */}
-        </div>
-        <div className="mt-3 container">
-          <div className="row justify-content-between">
-            <VariantSelector handleOptionChange={this.handleOptionChange} name="Model" variantOption={variants} productType={this.props.product.project.productType} />
-            <Button className="btn btn-outline-danger col-3 mt-2" onClick={() => this.props.addVariantToCart(variant.shopifyId, 1)}>Buy</Button>
-            <VariantQty handleOptionChange={this.handleOptionChange} name="Qty" variantOption={variants} productType={this.props.product.project.productType} />
           </div>
-          <div className="row justify-content-between pt-2">
+          <div className="mt-3 container">
+            <div className="row justify-content-between">
+              <VariantSelector handleOptionChange={this.handleOptionChange} name="Model" variantOption={variants} productType={this.props.product.project.productType} />
+              <Button className="btn btn-outline-danger col-3 mt-2" onClick={() => this.props.addVariantToCart(variant.shopifyId, 1)}>Buy</Button>
+              <VariantQty handleOptionChange={this.handleOptionChange} name="Qty" variantOption={variants} productType={this.props.product.project.productType} />
+            </div>
+            <div className="row justify-content-between pt-2">
+            </div>
           </div>
         </div>
-      </div>
-    </LazyLoad>
+      </LazyLoad>
     );
   }
 }

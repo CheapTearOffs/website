@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
-import LazyLoad from 'react-lazyload'
-import Link, { withPrefix } from 'gatsby-link'
-import Img from 'gatsby-image'
-import get from 'lodash/get'
-import { Alert } from 'reactstrap'
 
-import PortfolioNavi from '../PortfolioNavi'
+import StoreNavi from '../StoreNavi'
 import Product from '../Product';
-import VariantSelector from '../VariantSelector'
 
 class Products extends Component {
   render() {
-    const { location, projects, showProduct } = this.props
-    const pathPrefix = process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+    const { projects, showProduct } = this.props
 
     let products = this.props.projects.sort((a,b) => {
       var vendorA = a.project.vendor
@@ -28,14 +21,6 @@ class Products extends Component {
     }).map((product) => {
       let image = product.project.images[0].originalSrc
       image = image.substring(0, image.indexOf('?'))
-
-      let variants = product.project.variants.map((variant) => {
-        return variant.selectedOptions.map((option) => {
-          if(option.value != "Default Title") {
-            return option.value
-          }
-        })
-      })
 
       if(showProduct == product.project.productType) {
         return (
@@ -58,7 +43,7 @@ class Products extends Component {
             </p>
           </div>
         </div>
-        <PortfolioNavi projects={projects} {...this.props} />
+        <StoreNavi projects={projects} {...this.props} />
         <div id="store-grid" className="row justify-content-center pt-5">
           <div className="col-xl-6 col-lg-9 col-11">
             <div className="row justify-content-center">
