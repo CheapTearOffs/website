@@ -22,8 +22,8 @@ class StoreNavi extends Component {
               catLinks.push(
                 <li key={path} className="col-md-3 col-11 mt-6 mx-3" style={{}} >
                   <a className="nav-link" style={{cursor: 'pointer', padding: 0, boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.2)'}} onClick={() => (
-                                                                                this.props.showHideProjects(type)
-                                                                                // this.props.toggleStoreNav()
+                                                                                this.props.showHideProjects(type),
+                                                                                this.props.toggleStoreNav()
                                                                               )} >
                     <img src={withPrefix(`/img/${type}.jpg`)} style={{margin: 0, padding: 0}} />
                   </a>
