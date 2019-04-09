@@ -35,7 +35,7 @@ class Instagram extends Component {
               template="<a href='{{link}}' class='col-lg-2 col-3'><img src='{{image}}' /></a>"
               userId="1482619234"
               clientId="3799b1b8534743e1988f78a4fdb434d8"
-              accessToken="1482619234.3799b1b.45853abe9a024beeaa62e004a350bc46"
+              accessToken="1482619234.1677ed0.baef56975cac498fb32b0d3efd2cbfa7"
             />
           </div>
        </div>
