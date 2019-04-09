@@ -15,7 +15,7 @@ class StoreNavi extends Component {
       const path = get(data, 'project.id')
       const type = get (data, 'project.productType')
 
-      if (type != null) {
+      if (type != null) {        
           if (catList.indexOf(type) == -1) {
             catList.push(type)
             if(showStoreNav == false) {
