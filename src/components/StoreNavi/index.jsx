@@ -19,16 +19,42 @@ class StoreNavi extends Component {
           if (catList.indexOf(type) == -1) {
             catList.push(type)
             if(showStoreNav == false) {
-              catLinks.push(
-                <li key={path} className="col-md-3 col-11 mt-6 mx-3" style={{}} >
-                  <a className="nav-link" style={{cursor: 'pointer', padding: 0, boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.2)'}} onClick={() => (
-                                                                                this.props.showHideProjects(type),
-                                                                                this.props.toggleStoreNav()
-                                                                              )} >
-                    <img src={withPrefix(`/img/${type}.jpg`)} style={{margin: 0, padding: 0}} />
-                  </a>
-                </li>
-              )
+              if(type == "Tear-Offs") {
+                catLinks.push(
+                  <li key={path} className="col-md-3 col-11 mt-6 mx-3" style={{}} >
+                    <a className="nav-link" style={{cursor: 'pointer', padding: 0, boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.2)'}} onClick={() => (
+                                                                                  this.props.showHideProjects("Tear-Offs"),
+                                                                                  this.props.toggleStoreNav()
+                                                                                )} >
+                      <img src={withPrefix(`/img/Tear-Offs.jpg`)} style={{margin: 0, padding: 0}} />
+                    </a>
+                  </li>
+                )
+              }
+              else if(type == "Lenses") {
+                catLinks.push(
+                  <li key={path} className="col-md-3 col-11 mt-6 mx-3" style={{}} >
+                    <a className="nav-link" style={{cursor: 'pointer', padding: 0, boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.2)'}} onClick={() => (
+                                                                                  this.props.showHideProjects("Lenses"),
+                                                                                  this.props.toggleStoreNav()
+                                                                                )} >
+                      <img src={withPrefix(`/img/Lenses.jpg`)} style={{margin: 0, padding: 0}} />
+                    </a>
+                  </li>
+                )
+              }
+              else if(type == "Accesories") {
+                catLinks.push(
+                  <li key={path} className="col-md-3 col-11 mt-6 mx-3" style={{}} >
+                    <a className="nav-link" style={{cursor: 'pointer', padding: 0, boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.2)'}} onClick={() => (
+                                                                                  this.props.showHideProjects("Accesories"),
+                                                                                  this.props.toggleStoreNav()
+                                                                                )} >
+                      <img src={withPrefix(`/img/Accesories.jpg`)} style={{margin: 0, padding: 0}} />
+                    </a>
+                  </li>
+                )
+              }
             }
             else {
               catLinks.push(
