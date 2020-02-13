@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/25e30e82-0125-4786-9c62-699e8798ef6e/deploy-status)](https://app.netlify.com/sites/vigilant-pare-367d32/deploys)
+
 # Portfolio Template
 
 Gatsby starter for a portfolio using bootstrap. (Forked from [Gatstrap](https://github.com/jaxx2104/gatsby-starter-bootstrap) starter.)
