@@ -8,14 +8,17 @@ class StoreNavi extends Component {
     const catList = []
     const catLinks = []
 
-    console.log(showStoreNav)
-    console.log(showProduct)
+    console.log("showStoreNav: " + showStoreNav)
+    console.log("showProduct: " + showProduct)
 
     projects.forEach((data) => {
       const path = get(data, 'project.id')
       const type = get (data, 'project.productType')
 
-      if (type != null) {        
+      console.log("type: " + type)
+      console.log("path: " + path)
+
+      if (type != null) {
           if (catList.indexOf(type) == -1) {
             catList.push(type)
             if(showStoreNav == false) {
