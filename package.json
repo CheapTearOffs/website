@@ -30,7 +30,7 @@
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-source-shopify": "^1.0.1",
     "gatsby-source-shopify-storefront": "^1.0.0",
-    "gatsby-transformer-remark": "^1.7.44",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^1.6.27",
     "lodash": "^4.17.5",
     "prismjs": "^1.15.0",
